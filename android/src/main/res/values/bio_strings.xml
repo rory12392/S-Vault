@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 生物辨識（BIO）的字串（CONVENTIONS §11：名稱以 bio_ 開頭）。T-22 建立空檔，內容屬模組分支 module/biometric -->
+<resources>
+    <!-- 生物辨識提示框（T-70） -->
+    <string name="bio_prompt_title_unlock">使用生物辨識解鎖</string>
+    <string name="bio_prompt_title_enable">啟用生物辨識解鎖</string>
+    <string name="bio_prompt_use_password">使用主密碼</string>
+
+    <!-- 解鎖畫面的按鈕（UnlockProvider；T-71） -->
+    <string name="bio_unlock_button">使用生物辨識解鎖</string>
+
+    <!-- 設定頁的段落（SettingsSection；T-71，T-72 改成依目前的保管庫） -->
+    <string name="bio_settings_title">生物辨識解鎖</string>
+    <string name="bio_settings_status_on">這個保管庫已啟用</string>
+    <string name="bio_settings_status_off">這個保管庫尚未啟用</string>
+    <string name="bio_settings_status_locked">解鎖保管庫後才能設定</string>
+    <string name="bio_settings_status_others">%1$s（另有 %2$d 個保管庫已啟用）</string>
+    <string name="bio_settings_status_error">無法讀取生物辨識解鎖的狀態</string>
+    <string name="bio_settings_note">每次解鎖都要通過高安全性的生物辨識（例如指紋）。裝置新增生物特徵後會自動失效，要用主密碼解鎖後重新啟用。</string>
+    <string name="bio_settings_enable">啟用生物辨識解鎖</string>
+    <string name="bio_settings_disable">停用生物辨識解鎖</string>
+    <string name="bio_settings_disable_title">停用生物辨識解鎖？</string>
+    <string name="bio_settings_disable_current_message">會刪除這個保管庫在這台裝置上的生物辨識解鎖資料，之後要用主密碼解鎖。保管庫本身不受影響。</string>
+    <string name="bio_settings_disable_confirm">停用</string>
+    <string name="bio_settings_disable_all">停用所有保管庫</string>
+    <string name="bio_settings_disable_all_title">停用所有保管庫的生物辨識解鎖？</string>
+    <string name="bio_settings_disable_message">會刪除這台裝置上所有保管庫的生物辨識解鎖資料，之後要用主密碼解鎖。保管庫本身不受影響。</string>
+    <string name="bio_settings_disabled">已停用生物辨識解鎖</string>
+    <string name="bio_settings_disable_failed">停用時發生錯誤，請再試一次</string>
+
+    <!-- 啟用：輸入主密碼的對話框（T-72） -->
+    <string name="bio_enable_title">啟用生物辨識解鎖</string>
+    <string name="bio_enable_message">先輸入這個保管庫的主密碼，接著用指紋等生物辨識確認。</string>
+    <string name="bio_enable_password">主密碼</string>
+    <string name="bio_enable_next">下一步</string>
+    <string name="bio_enable_empty">請輸入主密碼</string>
+    <string name="bio_enable_mismatch">主密碼不正確</string>
+    <string name="bio_enable_too_many">錯誤次數太多，請上鎖後重新解鎖再試</string>
+    <string name="bio_enable_check_failed">無法確認主密碼，請再試一次</string>
+    <string name="bio_enable_done">已啟用生物辨識解鎖</string>
+    <string name="bio_enable_canceled">已取消，生物辨識解鎖沒有啟用</string>
+    <string name="bio_enable_failed">生物辨識沒有成功，生物辨識解鎖沒有啟用，請再試一次</string>
+    <string name="bio_enable_lockout">生物辨識失敗次數過多，生物辨識解鎖沒有啟用，請稍後再試</string>
+
+    <!-- 退回主密碼輸入時顯示的原因（AC-11-3、AC-11-4） -->
+    <string name="bio_reason_no_strong">這台裝置沒有支援高安全性（Class 3）的生物辨識，請使用主密碼解鎖。</string>
+    <string name="bio_reason_none_enrolled">裝置尚未登錄指紋，請先在系統設定登錄，或使用主密碼解鎖。</string>
+    <string name="bio_reason_hw_unavailable">生物辨識暫時無法使用，請使用主密碼解鎖。</string>
+    <string name="bio_reason_not_enabled">這個保管庫尚未啟用生物辨識解鎖。</string>
+    <string name="bio_reason_key_invalidated">生物特徵已變更，請重新輸入主密碼並重新啟用</string>
+    <string name="bio_reason_lockout">生物辨識失敗次數過多，請稍後再試或使用主密碼解鎖。</string>
+    <string name="bio_reason_lockout_permanent">生物辨識失敗次數過多，請先用螢幕鎖解鎖裝置，或使用主密碼解鎖。</string>
+    <string name="bio_reason_canceled">已取消生物辨識，請輸入主密碼。</string>
+    <string name="bio_reason_interrupted">生物辨識沒有成功（可能是失敗次數過多），請使用主密碼解鎖。</string>
+    <string name="bio_reason_corrupt">生物辨識解鎖的資料無法讀取，已停用，請使用主密碼解鎖後重新啟用。</string>
+    <string name="bio_reason_failed">生物辨識解鎖失敗，請使用主密碼解鎖。</string>
+</resources>

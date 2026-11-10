@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 開源授權清單的一列：名稱＋展開箭頭；展開後版本、授權、用途與唯讀的全文（等寬字，可選取）。
+     標題列可點、可聚焦，TalkBack 讀名稱與「已展開／已收合」 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/about_license_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/sv_row_min_height"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/sv_space_lg"
+        android:paddingVertical="@dimen/sv_space_sm">
+
+        <TextView
+            android:id="@+id/about_license_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurface" />
+
+        <ImageView
+            android:id="@+id/about_license_chevron"
+            android:layout_width="@dimen/sv_icon"
+            android:layout_height="@dimen/sv_icon"
+            android:layout_marginStart="@dimen/sv_space_md"
+            android:importantForAccessibility="no"
+            android:rotation="90"
+            android:src="@drawable/sv_ic_chevron_right"
+            app:tint="?attr/colorOnSurfaceVariant" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/about_license_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/sv_space_lg"
+        android:paddingBottom="@dimen/sv_space_md"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/about_license_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <TextView
+            android:id="@+id/about_license_license"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <TextView
+            android:id="@+id/about_license_purpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <TextView
+            android:id="@+id/about_license_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_sm"
+            android:background="@color/sv_surface_alt"
+            android:padding="@dimen/sv_space_sm"
+            android:textAppearance="@style/TextAppearance.SVault.Mono"
+            android:textColor="?attr/colorOnSurface"
+            android:textIsSelectable="true" />
+    </LinearLayout>
+</LinearLayout>

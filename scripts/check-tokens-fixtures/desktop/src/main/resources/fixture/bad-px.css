@@ -1,0 +1,8 @@
+/* token-check-expect: css-px */
+.a { -fx-padding: 7px; }
+.b { -fx-pref-width: 10; }
+.c {
+    -fx-font-size: 1.5em;
+    -fx-spacing: 6px 8px;
+}
+.d { -fx-max-width: 50%; }

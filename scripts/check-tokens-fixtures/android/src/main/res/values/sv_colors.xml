@@ -1,0 +1,5 @@
+<!-- token-check-expect: none（sv_colors.xml 是唯一可以定義顏色的地方） -->
+<resources>
+    <color name="sv_primary">#1F5FAF</color>
+    <color name="sv_on_primary">#FFFFFF</color>
+</resources>

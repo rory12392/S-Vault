@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EntryRow：網站圖示＋名稱＋帳號，整列可點；複製密碼鈕獨立可點。根元素是 ui.EntryRow -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- 統一的 language 圖示，不抓 favicon（避免連網） -->
+    <ImageView
+        android:layout_width="@dimen/sv_icon"
+        android:layout_height="@dimen/sv_icon"
+        android:importantForAccessibility="no"
+        android:src="@drawable/sv_ic_language"
+        app:tint="?attr/colorOnSurfaceVariant" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sv_space_lg"
+        android:layout_marginEnd="@dimen/sv_space_sm"
+        android:layout_weight="1"
+        android:importantForAccessibility="no"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/sv_space_sm">
+
+        <TextView
+            android:id="@+id/sv_entry_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/sv_entry_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sv_entry_copy"
+        style="@style/Widget.SVault.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/sv_ic_content_copy" />
+</merge>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 共用元件樣式。變體只用 style 指定；外部只能調整外距與版面，不覆寫顏色。 -->
+<resources>
+
+    <!-- Button：primary（一個畫面最多一個）／secondary／ghost／danger -->
+    <style name="Widget.SVault.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/sv_touch_target</item>
+    </style>
+    <style name="Widget.SVault.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/sv_touch_target</item>
+    </style>
+    <style name="Widget.SVault.Button.Ghost" parent="Widget.Material3.Button.TextButton">
+        <item name="android:minHeight">@dimen/sv_touch_target</item>
+    </style>
+    <!-- 危險按鈕直接指定顏色狀態清單：Material 1.14 的按鈕用 materialThemeOverlay 換 primary 時會變成洋紅色、
+         文字消失（T-03 實機截圖發現），所以不用 overlay -->
+    <style name="Widget.SVault.Button.Danger" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/sv_touch_target</item>
+        <item name="backgroundTint">@color/sv_button_danger_bg</item>
+        <item name="android:textColor">@color/sv_button_danger_text</item>
+        <item name="iconTint">@color/sv_button_danger_text</item>
+    </style>
+    <!-- 次要的危險動作（條目詳細的「刪除」） -->
+    <style name="Widget.SVault.Button.Ghost.Danger">
+        <item name="android:textColor">@color/sv_button_danger_ghost_text</item>
+        <item name="iconTint">@color/sv_button_danger_ghost_text</item>
+    </style>
+
+    <!-- IconButton：48dp 觸控目標；使用處一定要設 android:contentDescription -->
+    <style name="Widget.SVault.IconButton" parent="Widget.Material3.Button.IconButton">
+        <item name="android:minWidth">@dimen/sv_touch_target</item>
+        <item name="android:minHeight">@dimen/sv_touch_target</item>
+        <item name="iconTint">?attr/colorOnSurfaceVariant</item>
+        <item name="iconSize">@dimen/sv_icon</item>
+    </style>
+
+    <!-- TextField：標籤一律可見（hint 當標籤，不只用 placeholder） -->
+    <style name="Widget.SVault.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="hintEnabled">true</item>
+    </style>
+    <!-- PasswordField：M3 的顯示切換鈕（AC-02-5）；輸入框用 Widget.SVault.TextInputEditText.Password -->
+    <!-- 錯誤時 M3 預設用錯誤圖示取代尾端圖示，顯示切換鈕會消失（使用者就看不到自己打錯了什麼）：不顯示錯誤圖示，
+         錯誤由外框顏色與下方文字表達 -->
+    <style name="Widget.SVault.TextInputLayout.Password">
+        <item name="endIconMode">password_toggle</item>
+        <item name="errorIconDrawable">@null</item>
+    </style>
+    <!-- 密碼一律等寬字，明文時方便分辨 l／1／O／0。
+         M3 的字型樣式另外設了 app:fontFamily，會蓋過 android:fontFamily，所以兩個都要設（T-03 實機截圖發現） -->
+    <style name="Widget.SVault.TextInputEditText.Password" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:fontFamily">monospace</item>
+        <item name="fontFamily">monospace</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="Widget.SVault.Toolbar" parent="Widget.Material3.Toolbar.Surface" />
+
+    <!-- 等寬文字：密碼明文、產生的密碼 -->
+    <style name="TextAppearance.SVault.Mono" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">monospace</item>
+        <item name="fontFamily">monospace</item>
+    </style>
+</resources>

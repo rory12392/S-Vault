@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 密碼產生器頁（T-42）：放在外殼的 FeatureHostActivity 裡（Top app bar「密碼產生器」＋返回、FLAG_SECURE），
+     邊距與捲動由本頁自己排（§8.4）。內容是和底部 sheet 共用的 gen_panel.xml（T-44），最下面「複製」（primary） -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gen_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/sv_space_lg">
+
+        <include layout="@layout/gen_panel" />
+
+        <!-- host 沒有剪貼簿時（測試用的假 host）不顯示 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gen_copy"
+            style="@style/Widget.SVault.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_xl"
+            android:text="@string/gen_copy"
+            app:icon="@drawable/sv_ic_content_copy" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

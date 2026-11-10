@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自動填入（AF）的字串（CONVENTIONS §11：名稱以 af_ 開頭）。T-22 建立空檔，內容屬模組分支 module/autofill -->
+<resources>
+    <!-- 建議清單裡條目沒有名稱時（同衝突畫面的 conflict_untitled） -->
+    <string name="af_dataset_untitled">（沒有名稱）</string>
+
+    <!-- T-81：上鎖時建議清單裡的驗證項目（AC-10-2）；選了之後先解鎖再填入 -->
+    <string name="af_locked_title">S-Vault 已上鎖</string>
+    <string name="af_locked_hint">點一下解鎖後填入</string>
+
+    <!-- T-81：驗證頁（FeatureHostActivity 載入的 AfAuthFragment） -->
+    <string name="af_auth_title">自動填入</string>
+    <string name="af_auth_loading">正在載入保管庫…</string>
+    <string name="af_auth_none_title">沒有符合的條目</string>
+    <string name="af_auth_none_body">S-Vault 裡沒有網址符合這個 App 或網站的條目，所以不會填入帳密。</string>
+    <string name="af_auth_close">關閉</string>
+
+    <!-- T-83：沒有符合時建議清單裡的「搜尋保管庫」（AC-10-3）；選了之後開條目選擇頁 -->
+    <string name="af_search_title">搜尋保管庫</string>
+    <string name="af_search_hint">沒有符合的條目，點一下自己挑選</string>
+
+    <!-- T-83：條目選擇頁（FeatureHostActivity 載入的 AfPickFragment） -->
+    <string name="af_pick_title">選擇要填入的條目</string>
+    <string name="af_pick_source">要填入：%1$s</string>
+    <string name="af_pick_search">搜尋名稱、帳號或網址</string>
+    <string name="af_pick_none_title">找不到符合的條目</string>
+    <string name="af_pick_empty_title">沒有可以填入的條目</string>
+    <string name="af_pick_empty_body">保管庫裡的條目都沒有帳號或密碼。</string>
+    <string name="af_pick_nothing_to_fill">這筆條目沒有這個畫面要的帳號或密碼，挑另一筆。</string>
+    <!-- 不符警告（AC-10-5）：danger 確認，確認前不交回帳密 -->
+    <string name="af_pick_warn_title">填入網址不符的條目？</string>
+    <string name="af_pick_warn_message">這筆條目的網址是 %1$s，和要求填入的 %2$s 不同。網址不符的 App 或網站可能是仿冒的，確定是同一個服務再填入。</string>
+    <string name="af_pick_warn_no_url">這筆條目沒有網址，無法確認它屬於 %1$s。網址不符的 App 或網站可能是仿冒的，確定是同一個服務再填入。</string>
+    <string name="af_pick_warn_no_domain">%1$s 沒有提供網頁的網域，無法確認這個網站和條目相符。網址不符的網站可能是仿冒的，確定是同一個服務再填入。</string>
+    <string name="af_pick_warn_confirm">仍要填入</string>
+
+    <!-- T-82：目前的狀態（設定段落與引導頁共用，AC-10-1） -->
+    <string name="af_status_enabled">S-Vault 已是自動填入服務</string>
+    <string name="af_status_enabled_note">在其他 App 與瀏覽器的登入欄位，會出現 S-Vault 裡網址符合的條目。</string>
+    <string name="af_status_off">還沒有把 S-Vault 設為自動填入服務</string>
+    <string name="af_status_off_note">到系統設定選擇 S-Vault，之後在登入欄位就能直接填入帳號與密碼。</string>
+    <string name="af_status_unsupported">這台裝置不支援自動填入</string>
+    <string name="af_status_unsupported_note">系統沒有提供自動填入功能，S-Vault 無法在其他 App 填入帳密。</string>
+    <string name="af_status_open_failed">找不到系統的自動填入設定。請到系統設定搜尋「自動填入」，選擇 S-Vault。</string>
+
+    <!-- T-82：設定頁的「自動填入」段落（SettingsSection） -->
+    <string name="af_settings_title">自動填入</string>
+    <string name="af_settings_setup">設定自動填入</string>
+    <string name="af_settings_open_system">前往系統設定</string>
+    <string name="af_settings_guide">自動填入說明</string>
+    <string name="af_settings_disable_note">不想在其他 App 看到建議時，到設定頁的「功能模組」關閉「自動填入」。之後可以在同一個地方重新開啟，完全關閉 S-Vault 再開啟後生效。</string>
+
+    <!-- T-82：啟用引導（FeatureHostActivity 載入的 AfGuideFragment） -->
+    <string name="af_guide_title">設定自動填入</string>
+    <string name="af_guide_heading">在其他 App 直接填入帳密</string>
+    <string name="af_guide_body">把 S-Vault 設為自動填入服務後，在其他 App 與 Chrome 的登入欄位點一下，就會出現 S-Vault 裡網址符合的條目；保管庫上鎖時會先請你解鎖。網址不符的 App 或網站拿不到你的帳密。</string>
+    <string name="af_guide_steps_title">設定步驟</string>
+    <string name="af_guide_step_1">1. 點下方的「前往系統設定」。</string>
+    <string name="af_guide_step_2">2. 在清單中選擇 S-Vault，再按「確定」。</string>
+    <string name="af_guide_step_3">3. 回到這裡，上方會顯示「S-Vault 已是自動填入服務」。</string>
+    <string name="af_guide_chrome">Chrome 另外要在 Chrome 的「設定」→「自動填入服務」選擇「使用其他服務自動填入」。</string>
+</resources>

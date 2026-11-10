@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 設定的「密碼健檢」段落（T-53，同 desktop 的 T-52）：一列「上次檢查外洩」，值是時間或「尚未檢查」。
+     段落標題由外殼的設定頁畫 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/hlt_settings_last_check"
+        layout="@layout/settings_row" />
+</LinearLayout>

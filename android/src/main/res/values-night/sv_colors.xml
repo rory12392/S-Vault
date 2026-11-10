@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 色彩 token 的深色值，名稱與 values/sv_colors.xml 相同 -->
+<resources>
+    <color name="sv_bg">#11151B</color>
+    <color name="sv_surface">#1A2029</color>
+    <color name="sv_surface_alt">#232A35</color>
+    <color name="sv_fg">#E6EAF0</color>
+    <color name="sv_fg_muted">#9AA4B2</color>
+    <color name="sv_border">#2C3440</color>
+    <color name="sv_border_strong">#6B7686</color>
+    <color name="sv_primary">#8DB8F2</color>
+    <color name="sv_on_primary">#0B1B33</color>
+    <color name="sv_primary_container">#1C3A63</color>
+    <color name="sv_on_primary_container">#D6E6FB</color>
+    <color name="sv_danger">#F5A097</color>
+    <color name="sv_on_danger">#3B0A05</color>
+    <color name="sv_danger_container">#4A1A15</color>
+    <color name="sv_on_danger_container">#FCD9D4</color>
+    <color name="sv_success">#7FD1A0</color>
+    <color name="sv_success_container">#163A26</color>
+    <color name="sv_on_success_container">#CDEFD9</color>
+    <color name="sv_warning">#F2C46D</color>
+    <color name="sv_warning_container">#3D2C08</color>
+    <color name="sv_on_warning_container">#FBE6BD</color>
+    <!-- DESIGN 的 #00000066（RRGGBBAA）＝ Android 的 #66000000 -->
+    <color name="sv_shadow">#66000000</color>
+</resources>

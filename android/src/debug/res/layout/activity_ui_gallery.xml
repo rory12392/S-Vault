@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 元件展示頁（debug 版）：每個元件的變體與狀態。區塊標題的 tag 給 adb 的 section 參數捲動用 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gallery_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/gallery_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/gallery_menu"
+            app:title="@string/gallery_title" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/gallery_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/gallery_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/sv_space_xxl">
+
+                <!-- 字級與字型 -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="typography"
+                    android:text="@string/gallery_section_typography" />
+
+                <LinearLayout style="@style/Gallery.Block">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_type_title_large"
+                        android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_type_title_medium"
+                        android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_type_body_large"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_type_body_medium"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_type_label_large"
+                        android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_type_mono"
+                        android:textAppearance="@style/TextAppearance.SVault.Mono" />
+                </LinearLayout>
+
+                <!-- Button -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="buttons"
+                    android:text="@string/gallery_section_buttons" />
+
+                <com.google.android.material.chip.ChipGroup style="@style/Gallery.Block">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.Button.Primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_button_primary"
+                        app:icon="@drawable/sv_ic_add" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_button_secondary" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.Button.Ghost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_button_ghost" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.Button.Danger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_button_danger" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.Button.Ghost.Danger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_button_ghost_danger" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.Button.Primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="@string/gallery_button_disabled" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_saving"
+                        style="@style/Widget.SVault.Button.Primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_button_saving" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_toggle_loading"
+                        style="@style/Widget.SVault.Button.Ghost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_button_toggle_loading" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- IconButton -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="iconButtons"
+                    android:text="@string/gallery_section_icon_buttons" />
+
+                <LinearLayout
+                    style="@style/Gallery.Block"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/gallery_icon_copy"
+                        app:icon="@drawable/sv_ic_content_copy" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/gallery_icon_show"
+                        app:icon="@drawable/sv_ic_visibility" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/gallery_icon_lock"
+                        app:icon="@drawable/sv_ic_lock" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/gallery_icon_edit"
+                        app:icon="@drawable/sv_ic_edit" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/gallery_icon_settings"
+                        app:icon="@drawable/sv_ic_settings" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.SVault.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/gallery_icon_delete_disabled"
+                        android:enabled="false"
+                        app:icon="@drawable/sv_ic_delete" />
+                </LinearLayout>
+
+                <!-- 圖示：全部 Material Symbols（裝飾用，TalkBack 略過；實際使用處由 IconButton 提供名稱） -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="icons"
+                    android:text="@string/gallery_section_icons" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/gallery_icons"
+                    style="@style/Gallery.Block"
+                    android:importantForAccessibility="noHideDescendants" />
+
+                <!-- TextField -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="textFields"
+                    android:text="@string/gallery_section_text_fields" />
+
+                <LinearLayout style="@style/Gallery.Block">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/gallery_field_title">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_md"
+                        android:hint="@string/gallery_field_username"
+                        app:placeholderText="@string/gallery_field_username_placeholder">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/gallery_url_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_md"
+                        android:hint="@string/gallery_field_url">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"
+                            android:text="@string/gallery_field_url_value" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_md"
+                        android:enabled="false"
+                        android:hint="@string/gallery_field_disabled">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="@string/gallery_field_disabled_value" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- PasswordField -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="password"
+                    android:text="@string/gallery_section_password" />
+
+                <LinearLayout style="@style/Gallery.Block">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/gallery_master_layout"
+                        style="@style/Widget.SVault.TextInputLayout.Password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/gallery_password_master">
+
+                        <app.svault.android.ui.SecretEditText
+                            style="@style/Widget.SVault.TextInputEditText.Password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gallery_sample_password" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.SVault.TextInputLayout.Password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_md"
+                        android:hint="@string/gallery_password_with_meter">
+
+                        <app.svault.android.ui.SecretEditText
+                            android:id="@+id/gallery_password_meter_input"
+                            style="@style/Widget.SVault.TextInputEditText.Password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <app.svault.android.ui.StrengthMeter
+                        android:id="@+id/gallery_password_meter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_sm" />
+                </LinearLayout>
+
+                <!-- StrengthMeter -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="strength"
+                    android:text="@string/gallery_section_strength" />
+
+                <LinearLayout style="@style/Gallery.Block">
+
+                    <app.svault.android.ui.StrengthMeter
+                        android:id="@+id/gallery_meter_weak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <app.svault.android.ui.StrengthMeter
+                        android:id="@+id/gallery_meter_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_md" />
+
+                    <app.svault.android.ui.StrengthMeter
+                        android:id="@+id/gallery_meter_strong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_md" />
+                </LinearLayout>
+
+                <!-- SearchField：M3 SearchBar（點下後的 SearchView 在條目清單畫面 T-11 接上） -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="search"
+                    android:text="@string/gallery_section_search" />
+
+                <com.google.android.material.search.SearchBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/gallery_search_hint" />
+
+                <!-- EntryRow -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="entryRow"
+                    android:text="@string/gallery_section_entry_row" />
+
+                <app.svault.android.ui.EntryRow
+                    android:id="@+id/gallery_entry_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.EntryRow
+                    android:id="@+id/gallery_entry_school"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.EntryRow
+                    android:id="@+id/gallery_entry_wifi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- FieldRow -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="fieldRow"
+                    android:text="@string/gallery_section_field_row" />
+
+                <app.svault.android.ui.FieldRow
+                    android:id="@+id/gallery_field_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.FieldRow
+                    android:id="@+id/gallery_field_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.FieldRow
+                    android:id="@+id/gallery_field_password_revealed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.FieldRow
+                    android:id="@+id/gallery_field_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.FieldRow
+                    android:id="@+id/gallery_field_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- Dialog／ConfirmDialog -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="dialog"
+                    android:text="@string/gallery_section_dialog" />
+
+                <com.google.android.material.chip.ChipGroup style="@style/Gallery.Block">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_dialog_default"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_dialog_open_default" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_dialog_danger"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_dialog_open_danger" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Toast -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="toast"
+                    android:text="@string/gallery_section_toast" />
+
+                <com.google.android.material.chip.ChipGroup style="@style/Gallery.Block">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_toast_info"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_toast_show_info" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_toast_success"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_toast_show_success" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_toast_error"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_toast_show_error" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_toast_sticky"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_toast_show_sticky" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Banner -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="banner"
+                    android:text="@string/gallery_section_banner" />
+
+                <LinearLayout style="@style/Gallery.Block">
+
+                    <app.svault.android.ui.Banner
+                        android:id="@+id/gallery_banner_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <app.svault.android.ui.Banner
+                        android:id="@+id/gallery_banner_warning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_sm" />
+
+                    <app.svault.android.ui.Banner
+                        android:id="@+id/gallery_banner_error"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/sv_space_sm" />
+                </LinearLayout>
+
+                <!-- ProgressOverlay -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="progress"
+                    android:text="@string/gallery_section_progress" />
+
+                <com.google.android.material.chip.ChipGroup style="@style/Gallery.Block">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_progress_spinner"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_progress_show_spinner" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_progress_percent"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_progress_show_percent" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- EmptyState -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="empty"
+                    android:text="@string/gallery_section_empty" />
+
+                <app.svault.android.ui.EmptyState
+                    android:id="@+id/gallery_empty_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.EmptyState
+                    android:id="@+id/gallery_empty_plain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- DiffRow -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="diff"
+                    android:text="@string/gallery_section_diff" />
+
+                <app.svault.android.ui.DiffRow
+                    android:id="@+id/gallery_diff_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.DiffRow
+                    android:id="@+id/gallery_diff_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <app.svault.android.ui.DiffRow
+                    android:id="@+id/gallery_diff_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- FeatureHostActivity -->
+                <TextView
+                    style="@style/Gallery.Heading"
+                    android:tag="host"
+                    android:text="@string/gallery_section_host" />
+
+                <com.google.android.material.chip.ChipGroup style="@style/Gallery.Block">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_host_open"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_host_open" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_host_broken"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_host_open_broken" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/gallery_host_locked"
+                        style="@style/Widget.SVault.Button.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gallery_host_open_locked" />
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <app.svault.android.ui.ProgressOverlay
+        android:id="@+id/gallery_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

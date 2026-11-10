@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 危險按鈕（實心）的文字色：停用時 onSurface 38%，否則 on-danger -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.38" android:color="?attr/colorOnSurface" android:state_enabled="false" />
+    <item android:color="?attr/colorOnError" />
+</selector>

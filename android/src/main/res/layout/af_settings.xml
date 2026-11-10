@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 設定頁的「自動填入」段落（AF，T-82；AC-10-1）：目前的狀態、主要按鈕（還沒看過引導＝「設定自動填入」
+     開引導頁、看過＝「前往系統設定」）、「自動填入說明」（ghost）、去哪裡關閉的說明。
+     按鈕依 SetupState 顯示；文字在 AfSettingsFragment 設定，最大字體時換行 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/sv_space_lg"
+    android:paddingVertical="@dimen/sv_space_md">
+
+    <include
+        layout="@layout/af_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/af_settings_primary"
+        style="@style/Widget.SVault.Button.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_sm"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/af_settings_guide"
+        style="@style/Widget.SVault.Button.Ghost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/af_settings_guide"
+        android:visibility="gone" />
+
+    <!-- 模組的開關只有一個，在外殼的「功能模組」區段（T-38）；這裡只說明去哪裡關 -->
+    <TextView
+        android:id="@+id/af_settings_disable_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_sm"
+        android:text="@string/af_settings_disable_note"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+</LinearLayout>

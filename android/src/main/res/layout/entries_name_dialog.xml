@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 新增群組／重新命名群組對話框的欄位（「群組名稱」，空白時「群組名稱不能是空的」） -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/sv_space_xl"
+    android:paddingTop="@dimen/sv_space_sm">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_layout"
+        style="@style/Widget.SVault.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/entries_name_label">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:saveEnabled="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+</FrameLayout>

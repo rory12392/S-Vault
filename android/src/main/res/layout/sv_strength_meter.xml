@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- StrengthMeter（AC-04-4）：三段條＋文字「弱／中／強」，一律附文字。根元素是 ui.StrengthMeter（垂直） -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sv_meter_height"
+        android:importantForAccessibility="noHideDescendants"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/sv_meter_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/sv_bg_meter_segment" />
+
+        <View
+            android:id="@+id/sv_meter_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/sv_space_xs"
+            android:layout_weight="1"
+            android:background="@drawable/sv_bg_meter_segment" />
+
+        <View
+            android:id="@+id/sv_meter_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/sv_space_xs"
+            android:layout_weight="1"
+            android:background="@drawable/sv_bg_meter_segment" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sv_meter_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_xs"
+        android:importantForAccessibility="no"
+        android:textAppearance="?attr/textAppearanceLabelMedium" />
+</merge>

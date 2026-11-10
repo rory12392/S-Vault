@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自動填入的驗證頁（AF，T-81）：解鎖後等這次解鎖的內容載入（進度＋說明），有符合的條目就直接回到原來的 App；
+     沒有符合時顯示 EmptyState＋「關閉」。外框（Top app bar、FLAG_SECURE）由 FeatureHostActivity 提供 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/sv_space_lg">
+
+    <LinearLayout
+        android:id="@+id/af_auth_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:indeterminate="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_lg"
+            android:gravity="center"
+            android:text="@string/af_auth_loading"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurface" />
+    </LinearLayout>
+
+    <app.svault.android.ui.EmptyState
+        android:id="@+id/af_auth_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</FrameLayout>

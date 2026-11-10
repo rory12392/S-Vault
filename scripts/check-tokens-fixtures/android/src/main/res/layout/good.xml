@@ -1,0 +1,17 @@
+<!-- token-check-expect: none（0dp、資源引用、主題屬性都允許） -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/sv_space_lg"
+    android:background="?attr/colorSurface">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
+        android:textColor="@color/sv_fg_muted" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+</LinearLayout>

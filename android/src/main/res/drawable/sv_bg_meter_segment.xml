@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 強度條的一段；未達到的段用 surface-alt，達到的段由 StrengthMeter 以 backgroundTint 上色 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="?attr/colorSurfaceVariant" />
+    <corners android:radius="@dimen/sv_corner_tag" />
+</shape>

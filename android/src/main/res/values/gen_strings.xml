@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 密碼產生器（GEN）的字串（CONVENTIONS §11：名稱以 gen_ 開頭）。文字與 desktop 的 messages.properties 相同（T-41、T-42） -->
+<resources>
+    <string name="gen_page_title">密碼產生器</string>
+    <string name="gen_result_label">產生的密碼</string>
+    <string name="gen_result_regenerate">重新產生</string>
+    <string name="gen_result_invalid">至少選一種字元</string>
+    <string name="gen_mode_label">類型</string>
+    <string name="gen_mode_password">隨機密碼</string>
+    <string name="gen_mode_passphrase">通行片語</string>
+    <string name="gen_length_label">長度</string>
+    <string name="gen_class_upper">大寫字母（A–Z）</string>
+    <string name="gen_class_lower">小寫字母（a–z）</string>
+    <string name="gen_class_digit">數字（0–9）</string>
+    <string name="gen_class_symbol">符號（!@#$ 等）</string>
+    <string name="gen_words_label">單字數</string>
+    <string name="gen_words_value">單字數：%1$d</string>
+    <string name="gen_separator_label">分隔符號</string>
+    <!-- 依 PassphraseOptions.SEPARATORS 的順序：-、空白、.、_、不分隔 -->
+    <string-array name="gen_separator_names">
+        <item>連字號（-）</item>
+        <item>空白</item>
+        <item>句點（.）</item>
+        <item>底線（_）</item>
+        <item>不分隔（單字開頭大寫）</item>
+    </string-array>
+    <string name="gen_copy">複製</string>
+    <string name="gen_copied">已複製密碼，%1$d 秒後清除</string>
+    <!-- 編輯畫面密碼欄旁的「產生」與它的底部 sheet（T-44；同 desktop 的彈出面板） -->
+    <string name="gen_action_generate">產生</string>
+    <string name="gen_sheet_title">產生密碼</string>
+    <string name="gen_use">使用這個密碼</string>
+    <string name="gen_cancel">取消</string>
+    <!-- 產生時出錯（例如通行片語的字表讀不到）：錯誤邊界接住，頁面照常 -->
+    <string name="gen_error">無法產生密碼，可以換一種類型再試一次</string>
+</resources>

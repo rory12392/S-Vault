@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Buttons.setLoading 保存原本的圖示與啟用狀態 -->
+    <item name="sv_tag_loading" type="id" />
+    <!-- 設定頁以程式建立的列（SettingsFragment；儀器測試以 id 找列） -->
+    <item name="settings_theme_row" type="id" />
+    <item name="settings_auto_lock_row" type="id" />
+    <item name="settings_clipboard_row" type="id" />
+    <item name="settings_backup_row" type="id" />
+    <item name="settings_about_row" type="id" />
+</resources>

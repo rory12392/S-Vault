@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EmptyState：圖示＋說明＋（可選）行動按鈕。根元素是 ui.EmptyState（垂直置中） -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/sv_empty_icon"
+        android:layout_width="@dimen/sv_icon_large"
+        android:layout_height="@dimen/sv_icon_large"
+        android:importantForAccessibility="no"
+        app:tint="?attr/colorOnSurfaceVariant" />
+
+    <TextView
+        android:id="@+id/sv_empty_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_lg"
+        android:gravity="center"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="?attr/colorOnSurface" />
+
+    <TextView
+        android:id="@+id/sv_empty_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_sm"
+        android:gravity="center"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sv_empty_action"
+        style="@style/Widget.SVault.Button.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_xl"
+        android:visibility="gone" />
+</merge>

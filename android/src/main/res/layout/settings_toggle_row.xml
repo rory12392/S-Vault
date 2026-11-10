@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SettingsRow 的開關變體（DESIGN §3；T-38「功能模組」區段）：開關的文字是模組名稱，TalkBack 讀名稱與「開啟／關閉」；
+     改了之後下方出現「完全關閉 S-Vault 再開啟後…」，live region 讀出。文字在程式中設定（ModuleToggleRows） -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/sv_space_lg"
+    android:paddingVertical="@dimen/sv_space_xs">
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/settings_toggle_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/sv_row_min_height"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
+        android:textColor="?attr/colorOnSurface" />
+
+    <TextView
+        android:id="@+id/settings_toggle_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:paddingBottom="@dimen/sv_space_sm"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:visibility="gone" />
+</LinearLayout>

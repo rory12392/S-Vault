@@ -1,0 +1,16 @@
+/* token-check-expect: none（合法寫法：註解裡的 #FFFFFF、white、7px 不檢查） */
+.white-label:hover,
+.red-zone:focused {
+    -fx-text-fill: -sv-fg;
+    -fx-background-color: transparent, -sv-surface-alt;
+    -fx-background-insets: 0px, 1px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+    -fx-opacity: 0.4;
+    -fx-indeterminate-segment-count: 8;
+    -fx-font-family: "Microsoft JhengHei UI", "Segoe UI", sans-serif;
+    -fx-shape: "M0-960h0M960 0h0M240-80q-33 0-56.5-23.5T160-160v-400";
+    -fx-effect: dropshadow(gaussian, -sv-shadow, 12, 0, 0, 2);
+    -fx-pref-width: 220px;
+}
+.swatch { -fx-background-color: #1F5FAF; } /* token-check: allow 展示頁色票 */

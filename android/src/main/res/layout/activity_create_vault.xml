@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 建立保管庫：名稱、存放位置說明、主密碼＋強度、再次輸入、了解後果、建立。
+     存放位置在按下「建立保管庫」、驗證通過後才以另存新檔選擇器選（D-56） -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/create_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/create_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationContentDescription="@string/sv_navigate_up"
+        app:navigationIcon="@drawable/sv_ic_arrow_back"
+        app:title="@string/create_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/create_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:defaultFocusHighlightEnabled="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingBottom="@dimen/sv_space_lg">
+
+            <app.svault.android.ui.Banner
+                android:id="@+id/create_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sv_space_lg"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_name_layout"
+                style="@style/Widget.SVault.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/create_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/create_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_lg"
+                android:text="@string/create_location"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/create_location_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_xs"
+                android:text="@string/create_location_hint"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <!-- saveEnabled=false：主密碼不進 onSaveInstanceState 的 Bundle（系統可能把它寫到磁碟） -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_password_layout"
+                style="@style/Widget.SVault.TextInputLayout.Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_lg"
+                android:hint="@string/create_password">
+
+                <!-- 遮罩時不把主密碼交給無障礙服務（T-19） -->
+                <app.svault.android.ui.SecretEditText
+                    android:id="@+id/create_password"
+                    style="@style/Widget.SVault.TextInputEditText.Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <app.svault.android.ui.StrengthMeter
+                android:id="@+id/create_meter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_xs" />
+
+            <TextView
+                android:id="@+id/create_weak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_xs"
+                android:accessibilityLiveRegion="polite"
+                android:text="@string/create_weak"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/sv_warning"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_confirm_layout"
+                style="@style/Widget.SVault.TextInputLayout.Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:hint="@string/create_confirm">
+
+                <app.svault.android.ui.SecretEditText
+                    android:id="@+id/create_confirm"
+                    style="@style/Widget.SVault.TextInputEditText.Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/create_acknowledge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:minHeight="@dimen/sv_touch_target"
+                android:text="@string/create_acknowledge"
+                android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+            <TextView
+                android:id="@+id/create_acknowledge_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityLiveRegion="polite"
+                android:paddingStart="@dimen/sv_space_lg"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorError"
+                android:visibility="gone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/create_submit"
+                style="@style/Widget.SVault.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_xl"
+                android:text="@string/create_submit" />
+
+            <TextView
+                android:id="@+id/create_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_sm"
+                android:accessibilityLiveRegion="polite"
+                android:gravity="center_horizontal"
+                android:text="@string/create_creating"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

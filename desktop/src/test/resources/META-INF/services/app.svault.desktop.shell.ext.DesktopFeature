@@ -1,0 +1,4 @@
+app.svault.desktop.shell.fake.FakeDesktopModules$Alpha
+app.svault.desktop.shell.fake.FakeDesktopModules$BrokenConstructor
+app.svault.desktop.shell.fake.FakeDesktopModules$Beta
+app.svault.desktop.shell.fake.FakeDesktopModules$Faulty

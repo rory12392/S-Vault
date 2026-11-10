@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 只進測試 APK，不影響 App 的 manifest 與權限白名單（Architecture §3） -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- ContentResolverDocumentsTest 用的假文件提供者：只放測試位元組 -->
+        <provider
+            android:name="app.svault.android.platform.TestDocumentProvider"
+            android:authorities="app.svault.android.test.documents"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider"
+            xmlns:tools="http://schemas.android.com/tools" />
+        <!-- T-110 自動填入實測用的登入表單（只在測試 APK） -->
+        <activity
+            android:name="app.svault.android.feature.autofill.AfLoginTestActivity"
+            android:exported="true" />
+    </application>
+</manifest>

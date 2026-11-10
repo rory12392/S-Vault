@@ -1,0 +1,14 @@
+# 文字檔一律 LF（CONVENTIONS §12）
+* text=auto eol=lf
+
+# Windows 批次檔例外為 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 二進位檔
+*.kdbx binary
+*.png binary
+*.jar binary
+
+# 過程紀錄只附加，合併時保留兩邊的列
+docs/evidence/*.csv merge=union

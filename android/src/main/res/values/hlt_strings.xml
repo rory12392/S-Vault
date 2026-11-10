@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 健檢（HLT）的字串（CONVENTIONS §11：名稱以 hlt_ 開頭）。文字和 desktop 的 messages.properties 相同（T-52、T-53） -->
+<resources>
+    <!-- 報告頁 -->
+    <string name="hlt_page_title">密碼健檢</string>
+    <string name="hlt_summary_title">摘要</string>
+    <string name="hlt_summary_weak">弱密碼</string>
+    <string name="hlt_summary_weak_description">強度評為「弱」的密碼</string>
+    <string name="hlt_summary_reused">重複使用</string>
+    <string name="hlt_summary_reused_description">和其他條目使用相同的密碼</string>
+    <string name="hlt_summary_breached">外洩</string>
+    <string name="hlt_summary_breached_description">按「檢查外洩」才會連網，只傳送雜湊值的前 5 個字元</string>
+    <string name="hlt_summary_count">%1$,d 筆</string>
+    <string name="hlt_summary_not_checked">尚未檢查</string>
+    <string name="hlt_summary_connection_failed">無法連線</string>
+    <string name="hlt_breach_check">檢查外洩</string>
+    <string name="hlt_breach_confirm_title">檢查密碼是否外洩？</string>
+    <string name="hlt_breach_confirm_body">S-Vault 只會把每個密碼雜湊值的前 5 個字元傳送給 Have I Been Pwned，完整密碼不會離開這台裝置。</string>
+    <string name="hlt_breach_confirm_ok">檢查</string>
+    <string name="hlt_breach_failed">無法連線，稍後再試</string>
+    <string name="hlt_breach_clean">沒有密碼出現在外洩資料中</string>
+    <string name="hlt_section_weak">弱密碼</string>
+    <string name="hlt_section_reused">重複使用的密碼</string>
+    <string name="hlt_section_breached">外洩的密碼</string>
+    <!-- 重複使用的一組（android 沒有卡片，用小標題分組；D-HLT-07） -->
+    <string name="hlt_reused_group">共用同一個密碼（%1$,d 筆）</string>
+    <string name="hlt_reason_weak">強度：弱</string>
+    <string name="hlt_reason_reused">與 %1$,d 筆條目使用相同密碼</string>
+    <string name="hlt_reason_breached">在外洩資料中出現 %1$,d 次</string>
+    <string name="hlt_row_open">跳到條目：%1$s</string>
+    <string name="hlt_row_untitled">（沒有名稱）</string>
+    <string name="hlt_empty_title">沒有發現弱密碼或重複使用的密碼</string>
+    <string name="hlt_empty_description">也可以按「檢查外洩」，確認密碼有沒有出現在外洩資料中。</string>
+    <string name="hlt_progress_analyzing">正在分析密碼…</string>
+    <string name="hlt_progress_breach">正在檢查外洩（%1$,d／%2$,d）</string>
+    <string name="hlt_error_analyze">無法完成分析，可以回到上一頁後再開一次</string>
+    <string name="hlt_error">這個動作暫時無法完成</string>
+
+    <!-- 設定段落 -->
+    <string name="hlt_settings_title">密碼健檢</string>
+    <string name="hlt_settings_last_check">上次檢查外洩</string>
+    <string name="hlt_settings_last_check_description">只有在健檢頁按「檢查外洩」並確認後才會連網</string>
+    <string name="hlt_settings_last_check_never">尚未檢查</string>
+</resources>

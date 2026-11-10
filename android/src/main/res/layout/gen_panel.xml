@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 產生器的內容：產生器頁（gen_page.xml，T-42）與編輯畫面「產生」的底部 sheet（gen_sheet.xml，T-44）
+     共用，由 GeneratorPanel 綁定。結果（等寬字）＋「重新產生」、強度條、類型切換；隨機密碼：長度滑桿＋數字欄、四種字元；
+     通行片語：單字數、分隔符號。外面的邊距、捲動與按鈕（「複製」或「使用這個密碼」）由各自的版面排。
+     狀態都在 GeneratorViewModel，所有輸入元件 saveEnabled=false：重建時由 ViewModel 帶過去（sheet 重建時直接消失），
+     不靠系統的狀態保存；importantForAutofill=no：自動填入服務不要記下這裡的內容 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gen_panel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/gen_result_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/gen_result"
+        android:text="@string/gen_result_label"
+        android:textAppearance="?attr/textAppearanceLabelLarge"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_xs"
+        android:background="@drawable/sv_bg_rounded"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/sv_row_min_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/sv_space_md"
+        android:paddingEnd="@dimen/sv_space_xs">
+
+        <!-- 結果：等寬字，長的密碼換行；不合法時顯示 danger 文字「至少選一種字元」 -->
+        <TextView
+            android:id="@+id/gen_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/sv_space_sm"
+            android:layout_weight="1"
+            android:breakStrategy="simple"
+            android:importantForAutofill="no"
+            android:saveEnabled="false"
+            android:textAppearance="@style/TextAppearance.SVault.Mono" />
+
+        <TextView
+            android:id="@+id/gen_invalid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/sv_space_sm"
+            android:layout_weight="1"
+            android:accessibilityLiveRegion="polite"
+            android:text="@string/gen_result_invalid"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorError"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gen_regenerate"
+            style="@style/Widget.SVault.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/gen_result_regenerate"
+            android:tooltipText="@string/gen_result_regenerate"
+            app:icon="@drawable/sv_ic_sync" />
+    </LinearLayout>
+
+    <app.svault.android.ui.StrengthMeter
+        android:id="@+id/gen_strength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_sm" />
+
+    <TextView
+        android:id="@+id/gen_mode_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_lg"
+        android:text="@string/gen_mode_label"
+        android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/gen_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_sm"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gen_mode_password"
+            style="@style/Widget.SVault.Button.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/gen_mode_password" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gen_mode_passphrase"
+            style="@style/Widget.SVault.Button.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/gen_mode_passphrase" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <!-- 隨機密碼的選項（AC-04-1） -->
+    <LinearLayout
+        android:id="@+id/gen_password_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_lg"
+        android:orientation="vertical">
+
+        <!-- 數字欄很窄，標籤放在上方（M3 的浮動標籤會被截成「長…」，最大字體時整個看不到） -->
+        <TextView
+            android:id="@+id/gen_length_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/gen_length"
+            android:text="@string/gen_length_label"
+            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/gen_length_slider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/gen_length_label"
+                android:saveEnabled="false"
+                android:stepSize="1"
+                android:valueFrom="8"
+                android:valueTo="128"
+                app:tickVisible="false" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/gen_length_layout"
+                style="@style/Widget.SVault.TextInputLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sv_space_sm"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gen_length"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/gen_class_upper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_sm"
+            android:minHeight="@dimen/sv_touch_target"
+            android:saveEnabled="false"
+            android:text="@string/gen_class_upper"
+            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/gen_class_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/sv_touch_target"
+            android:saveEnabled="false"
+            android:text="@string/gen_class_lower"
+            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/gen_class_digit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/sv_touch_target"
+            android:saveEnabled="false"
+            android:text="@string/gen_class_digit"
+            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/gen_class_symbol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/sv_touch_target"
+            android:saveEnabled="false"
+            android:text="@string/gen_class_symbol"
+            android:textAppearance="?attr/textAppearanceBodyLarge" />
+    </LinearLayout>
+
+    <!-- 通行片語的選項（AC-04-2） -->
+    <LinearLayout
+        android:id="@+id/gen_passphrase_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_lg"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/gen_words_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/gen_words"
+            android:text="@string/gen_words_label"
+            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/gen_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/gen_words_label"
+            android:saveEnabled="false"
+            android:stepSize="1"
+            android:valueFrom="4"
+            android:valueTo="10" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/gen_separator_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_md"
+            android:hint="@string/gen_separator_label">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/gen_separator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="none"
+                android:saveEnabled="false" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+</LinearLayout>

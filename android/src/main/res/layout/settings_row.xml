@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SettingsRow（DESIGN §3；android 沒有 AndroidX Preference 相依，用一般 View 做）：標題＋說明＋目前的值＋導覽箭頭。
+     整列可點、可聚焦，TalkBack 把標題、說明、值合起來讀；文字在程式中設定（SettingsRows），最大字體時換行 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/sv_row_min_height"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/sv_space_lg"
+    android:paddingVertical="@dimen/sv_space_md">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/settings_row_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/settings_row_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/settings_row_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_xs"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorPrimary"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/settings_row_chevron"
+        android:layout_width="@dimen/sv_icon"
+        android:layout_height="@dimen/sv_icon"
+        android:layout_marginStart="@dimen/sv_space_md"
+        android:importantForAccessibility="no"
+        android:src="@drawable/sv_ic_chevron_right"
+        android:visibility="gone"
+        app:tint="?attr/colorOnSurfaceVariant" />
+</LinearLayout>

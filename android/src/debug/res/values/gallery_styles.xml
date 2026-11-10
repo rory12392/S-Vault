@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 元件展示頁的版面樣式（只在 debug 版） -->
+<resources>
+    <style name="Gallery.Heading" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/sv_space_lg</item>
+        <item name="android:paddingEnd">@dimen/sv_space_lg</item>
+        <item name="android:paddingTop">@dimen/sv_space_xl</item>
+        <item name="android:paddingBottom">@dimen/sv_space_sm</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:accessibilityHeading">true</item>
+    </style>
+
+    <!-- 一般區塊（LinearLayout）與按鈕的換行排列（ChipGroup）共用 -->
+    <style name="Gallery.Block" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">@dimen/sv_space_lg</item>
+        <item name="android:paddingEnd">@dimen/sv_space_lg</item>
+        <item name="chipSpacingHorizontal">@dimen/sv_space_sm</item>
+        <item name="chipSpacingVertical">@dimen/sv_space_xs</item>
+    </style>
+</resources>

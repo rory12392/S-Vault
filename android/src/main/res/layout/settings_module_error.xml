@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 模組段落出錯時的內容（danger 文字「這個功能暫時無法使用」） -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/sv_row_min_height"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="@dimen/sv_space_lg"
+    android:text="@string/settings_module_error"
+    android:textAppearance="?attr/textAppearanceBodyLarge"
+    android:textColor="?attr/colorError" />

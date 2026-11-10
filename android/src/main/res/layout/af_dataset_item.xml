@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自動填入建議清單的一列（AF，T-80）：條目名稱＋帳號。由系統以 RemoteViews 顯示在別的 App 上：
+     主題屬性（?attr/…）解析不到，所以直接用 sv_ 顏色與尺寸 token；底色由系統的建議清單決定 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/sv_row_min_height"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/sv_space_lg"
+    android:paddingEnd="@dimen/sv_space_lg"
+    android:paddingTop="@dimen/sv_space_sm"
+    android:paddingBottom="@dimen/sv_space_sm">
+
+    <TextView
+        android:id="@+id/af_dataset_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"
+        android:textColor="@color/sv_fg" />
+
+    <TextView
+        android:id="@+id/af_dataset_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@android:style/TextAppearance.Material.Body2"
+        android:textColor="@color/sv_fg_muted" />
+</LinearLayout>

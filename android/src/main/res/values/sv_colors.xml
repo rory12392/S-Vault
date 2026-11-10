@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 色彩 token 的淺色值。深色值在 values-night/sv_colors.xml，兩份的名稱必須一致（SvColorsTest 檢查）。
+     只有這兩個檔可以出現色碼；版面與程式引用主題屬性或 @color/sv_*。 -->
+<resources>
+    <color name="sv_bg">#F4F6F8</color>
+    <color name="sv_surface">#FFFFFF</color>
+    <color name="sv_surface_alt">#EBEEF2</color>
+    <color name="sv_fg">#1A2230</color>
+    <color name="sv_fg_muted">#5A6577</color>
+    <color name="sv_border">#D9DEE5</color>
+    <color name="sv_border_strong">#7D8797</color>
+    <color name="sv_primary">#1F5FAF</color>
+    <color name="sv_on_primary">#FFFFFF</color>
+    <color name="sv_primary_container">#DCE8F8</color>
+    <color name="sv_on_primary_container">#0E3466</color>
+    <color name="sv_danger">#B42318</color>
+    <color name="sv_on_danger">#FFFFFF</color>
+    <color name="sv_danger_container">#FDE8E6</color>
+    <color name="sv_on_danger_container">#7A1A10</color>
+    <color name="sv_success">#1E7A46</color>
+    <color name="sv_success_container">#E3F3EA</color>
+    <color name="sv_on_success_container">#0F4A29</color>
+    <color name="sv_warning">#8A5A00</color>
+    <color name="sv_warning_container">#FFF1D6</color>
+    <color name="sv_on_warning_container">#5C3B00</color>
+    <!-- 陰影與遮罩（ProgressOverlay 的底）；Android 的元件陰影用 M3 預設 elevation。
+         Android 色碼是 #AARRGGBB：DESIGN 的 #1A223029（CSS 的 RRGGBBAA）寫成 #291A2230 -->
+    <color name="sv_shadow">#291A2230</color>
+</resources>

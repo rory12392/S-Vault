@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 只在 debug 版：元件展示頁。release APK 不含這個宣告與類別。
+     匯出是為了用 adb shell am start 開啟（shell 使用者不能開未匯出的 Activity）；debug 版只裝在開發用的手機上 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name=".gallery.UiGalleryActivity"
+            android:exported="true"
+            android:label="@string/gallery_title" />
+    </application>
+</manifest>

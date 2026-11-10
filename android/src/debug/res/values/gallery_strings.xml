@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 元件展示頁（debug 版）的文字；只用假資料，與 desktop 的展示頁一致 -->
+<resources>
+    <string name="gallery_title">元件展示</string>
+    <string name="gallery_theme_light">淺色</string>
+    <string name="gallery_theme_dark">深色</string>
+    <string name="gallery_theme_system">跟隨系統</string>
+
+    <string name="gallery_section_typography">字級與字型</string>
+    <string name="gallery_section_buttons">Button</string>
+    <string name="gallery_section_icon_buttons">IconButton</string>
+    <string name="gallery_section_icons">圖示（Material Symbols）</string>
+    <string name="gallery_section_text_fields">TextField</string>
+    <string name="gallery_section_password">PasswordField</string>
+    <string name="gallery_section_strength">StrengthMeter</string>
+    <string name="gallery_section_search">SearchField</string>
+    <string name="gallery_section_entry_row">EntryRow</string>
+    <string name="gallery_section_field_row">FieldRow</string>
+    <string name="gallery_section_dialog">Dialog／ConfirmDialog</string>
+    <string name="gallery_section_toast">Toast（Snackbar）</string>
+    <string name="gallery_section_banner">Banner</string>
+    <string name="gallery_section_progress">ProgressOverlay</string>
+    <string name="gallery_section_empty">EmptyState</string>
+    <string name="gallery_section_diff">DiffRow</string>
+    <string name="gallery_section_host">FeatureHostActivity</string>
+
+    <string name="gallery_type_title_large">頁面標題 TitleLarge</string>
+    <string name="gallery_type_title_medium">區塊標題 TitleMedium</string>
+    <string name="gallery_type_body_large">內文 BodyLarge：繁體中文與 English 混排，標點「」、。？</string>
+    <string name="gallery_type_body_medium">輔助文字 BodyMedium：帳號、時間、說明</string>
+    <string name="gallery_type_label_large">標籤、按鈕文字 LabelLarge</string>
+    <string name="gallery_type_mono" formatted="false">等寬：l1O0 Il|o0 `~!@#$%^&amp;*()</string>
+
+    <string name="gallery_button_primary">新增條目</string>
+    <string name="gallery_button_secondary">取消</string>
+    <string name="gallery_button_ghost">開啟其他檔案</string>
+    <string name="gallery_button_danger">刪除</string>
+    <string name="gallery_button_ghost_danger">刪除（次要）</string>
+    <string name="gallery_button_disabled">已停用</string>
+    <string name="gallery_button_saving">儲存</string>
+    <string name="gallery_button_toggle_loading">切換「儲存」loading</string>
+
+    <string name="gallery_icon_copy">複製密碼</string>
+    <string name="gallery_icon_show">顯示密碼</string>
+    <string name="gallery_icon_lock">上鎖</string>
+    <string name="gallery_icon_edit">編輯</string>
+    <string name="gallery_icon_settings">設定</string>
+    <string name="gallery_icon_delete_disabled">刪除（已停用）</string>
+
+    <string name="gallery_field_title">名稱</string>
+    <string name="gallery_field_username">帳號</string>
+    <string name="gallery_field_username_placeholder">例：name@example.com</string>
+    <string name="gallery_field_url">網址</string>
+    <string name="gallery_field_url_value">example</string>
+    <string name="gallery_field_url_error">網址格式不正確，例：https://example.com</string>
+    <string name="gallery_field_disabled">已停用的欄位</string>
+    <string name="gallery_field_disabled_value">無法編輯</string>
+    <string name="gallery_password">密碼</string>
+    <string name="gallery_password_master">主密碼</string>
+    <string name="gallery_password_wrong">主密碼不正確，再試一次</string>
+    <string name="gallery_password_with_meter">密碼（含強度條）</string>
+    <string name="gallery_search_hint">搜尋名稱、帳號或網址</string>
+
+    <string name="gallery_sample_bank">網路銀行</string>
+    <string name="gallery_sample_bank_user">rory.bank@example.com</string>
+    <string name="gallery_sample_school">學校信箱 Mail</string>
+    <string name="gallery_sample_group_path">我的密碼 / 學校</string>
+    <string name="gallery_sample_school_user">mail@school.example.edu</string>
+    <string name="gallery_sample_wifi">家裡 Wi-Fi</string>
+    <string name="gallery_sample_query">mail</string>
+    <string name="gallery_sample_password">l1O0-Fake-Pass-2026</string>
+    <string name="gallery_sample_url">https://bank.example.com/login</string>
+    <string name="gallery_sample_notes">這是一段比較長的備註，用來確認多行文字會自動換行，不會被截斷或超出右側的動作按鈕。</string>
+    <string name="gallery_field_password_revealed">密碼（明文）</string>
+    <string name="gallery_field_notes">備註</string>
+    <string name="gallery_copied_toast">已複製密碼，30 秒後清除</string>
+
+    <string name="gallery_dialog_open_default">開啟一般對話框</string>
+    <string name="gallery_dialog_open_danger">開啟危險確認</string>
+    <string name="gallery_dialog_default_title">捨棄修改？</string>
+    <string name="gallery_dialog_default_body">你的修改還沒有儲存。</string>
+    <string name="gallery_dialog_default_confirm">捨棄</string>
+    <string name="gallery_dialog_danger_title">刪除這筆條目？</string>
+    <string name="gallery_dialog_danger_body">條目會移到資源回收桶，可以從那裡還原。</string>
+    <string name="gallery_dialog_danger_confirm">刪除</string>
+
+    <string name="gallery_toast_info">已複製帳號</string>
+    <string name="gallery_toast_success">已儲存</string>
+    <string name="gallery_toast_error">無法儲存：目前離線，稍後再試</string>
+    <string name="gallery_toast_show_info">顯示 info</string>
+    <string name="gallery_toast_show_success">顯示 success</string>
+    <string name="gallery_toast_show_error">顯示 error</string>
+    <string name="gallery_toast_show_sticky">顯示到關閉為止</string>
+
+    <string name="gallery_banner_info">正在同步最新資料…</string>
+    <string name="gallery_banner_warning">尚未同步，稍後自動重試</string>
+    <string name="gallery_banner_error">找不到這個檔案，它可能已被移動或刪除。</string>
+    <string name="gallery_banner_action">重新選擇檔案</string>
+
+    <string name="gallery_progress_show_spinner">顯示不確定進度（2 秒）</string>
+    <string name="gallery_progress_show_percent">顯示百分比（2 秒）</string>
+    <string name="gallery_progress_unlocking">正在解鎖（這個檔案的加密設定較高，可能需要較久）</string>
+    <string name="gallery_progress_importing">正在匯入條目…</string>
+
+    <string name="gallery_empty_title">這個群組還沒有條目</string>
+    <string name="gallery_empty_body">新增第一筆條目，或從 Chrome 匯入。</string>
+    <string name="gallery_empty_action">新增條目</string>
+    <string name="gallery_empty_not_found">找不到符合的條目</string>
+
+    <string name="gallery_diff_username">帳號</string>
+    <string name="gallery_diff_username_other">rory@example.com</string>
+    <string name="gallery_diff_password">密碼</string>
+    <string name="gallery_diff_password_other">Other-Fake-Pass-77</string>
+    <string name="gallery_diff_notes">備註</string>
+    <string name="gallery_diff_notes_other">另一台新增的備註</string>
+    <string name="gallery_diff_time_this">2026/10/17 09:30</string>
+    <string name="gallery_diff_time_other">2026/10/17 10:05</string>
+
+    <string name="gallery_host_open">開啟模組頁面（回傳結果）</string>
+    <string name="gallery_host_open_broken">開啟會出錯的模組頁面</string>
+    <string name="gallery_host_open_locked">上鎖狀態下開啟（導回啟動畫面）</string>
+    <string name="gallery_host_page_title">示範模組頁面</string>
+    <string name="gallery_host_page_body">這是由 FeatureHostActivity 以 Fragment 類別載入的頁面。這個畫面設定了 FLAG_SECURE，截圖會是黑色的。</string>
+    <string name="gallery_host_page_return">回傳結果</string>
+    <string name="gallery_host_result">收到模組頁面的結果：%1$s</string>
+</resources>

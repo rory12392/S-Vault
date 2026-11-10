@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 設定與關於頁的區塊標題（DESIGN §2.4：區塊標題＝TitleMedium）；TalkBack 標為標題，可用標題導覽跳段落 -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:accessibilityHeading="true"
+    android:paddingHorizontal="@dimen/sv_space_lg"
+    android:paddingTop="@dimen/sv_space_xl"
+    android:paddingBottom="@dimen/sv_space_sm"
+    android:textAppearance="?attr/textAppearanceTitleMedium"
+    android:textColor="?attr/colorPrimary" />

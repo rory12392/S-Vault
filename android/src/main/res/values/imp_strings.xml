@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 匯入（IMP）的字串（CONVENTIONS §11：名稱以 imp_ 開頭）。T-62：文字照 desktop 的 messages.properties（T-61），
+     「這台電腦」「被其他程式鎖住」等桌面用語改成手機的說法 -->
+<resources>
+    <string name="imp_page_title">從 Chrome 匯入</string>
+
+    <string name="imp_step_choose">1 選擇檔案</string>
+    <string name="imp_step_preview">2 預覽</string>
+    <string name="imp_step_done">3 完成</string>
+    <string name="imp_step_arrow">→</string>
+    <string name="imp_step_current">第 %1$d 步，共 %2$d 步：%3$s</string>
+
+    <string name="imp_choose_intro">選擇從 Chrome 或 Google 密碼管理工具匯出的密碼 CSV 檔。檔案只在這支手機的記憶體中讀取，不會另存複本。</string>
+    <string name="imp_choose_how">在 Chrome 開啟「Google 密碼管理工具」→「設定」→「匯出密碼」，就能取得這個檔案。</string>
+    <string name="imp_choose_button">選擇 CSV 檔</string>
+
+    <string name="imp_progress_reading">正在讀取 CSV 檔…</string>
+    <string name="imp_progress_importing">正在匯入 %1$d 筆…</string>
+
+    <string name="imp_preview_total">共 %1$d 筆</string>
+    <string name="imp_preview_first">前 %1$d 筆</string>
+    <string name="imp_preview_username">帳號：%1$s</string>
+    <string name="imp_preview_url">網址：%1$s</string>
+    <string name="imp_preview_password">密碼：%1$s</string>
+    <string name="imp_preview_masked">密碼已隱藏</string>
+    <string name="imp_preview_empty_value">（空白）</string>
+    <string name="imp_preview_duplicate">可能重複</string>
+    <string name="imp_preview_skipped">跳過 %1$d 列：第 %2$s 行（格式錯誤，這些列不會匯入）</string>
+    <string name="imp_preview_rechoose">重新選擇檔案</string>
+    <string name="imp_preview_import">匯入到「%1$s」群組</string>
+    <string name="imp_preview_nothing">沒有要匯入的條目。可以改選「照樣匯入」，或重新選擇檔案。</string>
+
+    <string name="imp_duplicate_intro">有 %1$d 筆的網址網域和帳號都和保管庫裡的條目相同，可能已經存在：第 %2$s 行</string>
+    <string name="imp_duplicate_skip">略過可能重複的 %1$d 筆</string>
+    <string name="imp_duplicate_keep">照樣匯入</string>
+
+    <string name="imp_done_title">已匯入 %1$d 筆</string>
+    <string name="imp_done_group">已放進新的「%1$s」群組。</string>
+    <string name="imp_done_warning">CSV 檔中的密碼沒有加密，任何人打開都看得到。建議現在刪除這個檔案。</string>
+    <string name="imp_done_path">檔案位置</string>
+    <string name="imp_done_again">匯入另一個檔案</string>
+    <string name="imp_location_internal">內部儲存空間</string>
+
+    <string name="imp_problem_read_failed">無法讀取這個檔案。確認檔案還在，再選一次。</string>
+    <string name="imp_problem_empty">這個檔案是空的。重新從 Chrome 匯出密碼後再選一次。</string>
+    <string name="imp_problem_missing_columns">這不是 Chrome 匯出的密碼 CSV 檔（找不到網址、帳號、密碼欄位）。選擇從 Google 密碼管理工具匯出的檔案。</string>
+    <string name="imp_problem_not_utf8">無法辨識這個檔案的文字編碼。直接選擇 Chrome 匯出的檔案，不要先用其他程式另存。</string>
+    <string name="imp_problem_too_large">檔案超過 16 MB 或 10 萬筆，不像是 Chrome 匯出的密碼檔。確認選對檔案。</string>
+    <string name="imp_problem_locked">保管庫已上鎖，沒有匯入任何條目。解鎖後再匯入一次。</string>
+    <string name="imp_problem_conflict">保管庫有衝突要先處理，沒有匯入任何條目。回到首頁處理衝突後再匯入一次。</string>
+    <string name="imp_problem_save_failed">沒有匯入任何條目：無法儲存保管庫。確認連線與檔案權限後再試一次。</string>
+    <string name="imp_error">匯入時發生錯誤，沒有匯入任何條目。</string>
+</resources>

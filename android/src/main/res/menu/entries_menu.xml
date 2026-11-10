@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 條目畫面的 Top app bar（DESIGN §4）：上鎖按鈕（AC-12-5）；首頁另有溢位選單的「新增群組」（程式中依畫面顯示）。
+     首頁另有「備份還原」（T-12）、「設定」「關於」（T-24）；功能模組的頁面（產生器、健檢、匯入）由 HomeActivity 依
+     MenuPage 加入，order 200 起（T-30），所以這裡的 orderInCategory 留出位置 -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/entries_lock"
+        android:icon="@drawable/sv_ic_lock"
+        android:orderInCategory="0"
+        android:title="@string/home_lock"
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/entries_add_group"
+        android:orderInCategory="100"
+        android:title="@string/entries_group_add"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <!-- 首頁才顯示（T-12） -->
+    <item
+        android:id="@+id/entries_restore"
+        android:orderInCategory="300"
+        android:title="@string/restore_menu"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <!-- 首頁才顯示（T-24；順序：…、備份還原、設定、關於） -->
+    <item
+        android:id="@+id/entries_settings"
+        android:orderInCategory="400"
+        android:title="@string/settings_menu"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/entries_about"
+        android:orderInCategory="500"
+        android:title="@string/about_menu"
+        android:visible="false"
+        app:showAsAction="never" />
+</menu>

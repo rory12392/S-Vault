@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 備份清單的一列：單選鈕＋備份時間（最新的一列加「（最新）」）；整列可點，TalkBack 讀「選項按鈕，已勾選」 -->
+<com.google.android.material.radiobutton.MaterialRadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backup_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/sv_space_md"
+    android:layout_marginEnd="@dimen/sv_space_lg"
+    android:minHeight="@dimen/sv_row_min_height"
+    android:paddingHorizontal="@dimen/sv_space_md"
+    android:paddingVertical="@dimen/sv_space_sm"
+    android:textAppearance="?attr/textAppearanceBodyLarge"
+    android:textColor="?attr/colorOnSurface" />

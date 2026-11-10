@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 設定（T-24）：外觀、安全、備份、各模組的段落、關於。列由 SettingsFragment 以 settings_row 建立；
+     放在 FeatureHostActivity（Top app bar「設定」＋返回、FLAG_SECURE）裡 -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/settings_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/sv_space_xl" />
+</androidx.core.widget.NestedScrollView>

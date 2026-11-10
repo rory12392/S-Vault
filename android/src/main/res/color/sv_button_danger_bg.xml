@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 危險按鈕的底色：停用時與 M3 一般按鈕相同（onSurface 12%），否則 danger -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.12" android:color="?attr/colorOnSurface" android:state_enabled="false" />
+    <item android:color="?attr/colorError" />
+</selector>

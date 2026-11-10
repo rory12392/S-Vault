@@ -1,0 +1,7 @@
+/* token-check-expect: none（theme-*.css 是唯一可以寫色碼的地方） */
+.root {
+    -sv-bg: #F4F6F8;
+    -sv-fg: #1A2230;
+    -fx-base: -sv-bg;
+    -fx-faint-focus-color: transparent;
+}

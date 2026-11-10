@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Banner：頁面層級的持續訊息，info／warning／error，可含一個動作按鈕。根元素是 ui.Banner -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/sv_banner_icon"
+        android:layout_width="@dimen/sv_icon"
+        android:layout_height="@dimen/sv_icon"
+        android:layout_marginTop="@dimen/sv_space_md"
+        android:importantForAccessibility="no" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sv_space_md"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/sv_banner_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/sv_space_md"
+            android:paddingVertical="@dimen/sv_space_md"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sv_banner_action"
+            style="@style/Widget.SVault.Button.Ghost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:visibility="gone" />
+    </LinearLayout>
+</merge>

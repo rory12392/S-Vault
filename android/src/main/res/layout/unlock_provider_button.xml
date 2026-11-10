@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 解鎖畫面上一個替代解鎖方式的按鈕（UnlockProvider，例如 BIO 的「使用生物辨識解鎖」）；文字由模組提供 -->
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.SVault.Button.Secondary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/sv_space_md" />

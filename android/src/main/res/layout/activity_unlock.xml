@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 解鎖：保管庫名稱、Banner、主密碼欄、替代解鎖方式（UnlockProvider）、解鎖、開啟其他檔案。
+     超過 5 秒時 ProgressOverlay 蓋住整個畫面。
+     根部用 CoordinatorLayout：Snackbar（「已上鎖」）放進這裡，才會隨內距避開鍵盤，不被鍵盤蓋住 -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/unlock_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/unlock_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/app_name" />
+
+        <!-- 解鎖中主密碼欄停用時，鍵盤操作（非觸控模式）的焦點會落到捲動區；不要畫系統預設的整塊灰色焦點高亮 -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/unlock_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:defaultFocusHighlightEnabled="false"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingBottom="@dimen/sv_space_lg">
+
+                <ImageView
+                    android:layout_width="@dimen/sv_icon_large"
+                    android:layout_height="@dimen/sv_icon_large"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/sv_space_xl"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/sv_ic_lock"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/unlock_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:accessibilityHeading="true"
+                    android:gravity="center_horizontal"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/unlock_file"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_xs"
+                    android:gravity="center_horizontal"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <app.svault.android.ui.Banner
+                    android:id="@+id/unlock_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:visibility="gone" />
+
+                <!-- saveEnabled=false：主密碼不進 onSaveInstanceState 的 Bundle（系統可能把它寫到磁碟） -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/unlock_password_layout"
+                    style="@style/Widget.SVault.TextInputLayout.Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_xl"
+                    android:hint="@string/unlock_password">
+
+                    <!-- 遮罩時不把主密碼交給無障礙服務（T-19） -->
+                    <app.svault.android.ui.SecretEditText
+                        android:id="@+id/unlock_password"
+                        style="@style/Widget.SVault.TextInputEditText.Password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:saveEnabled="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- 功能模組的替代解鎖方式（BIO：「使用生物辨識解鎖」）；沒有時不顯示 -->
+                <LinearLayout
+                    android:id="@+id/unlock_providers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/unlock_submit"
+                    style="@style/Widget.SVault.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:text="@string/unlock_submit" />
+
+                <TextView
+                    android:id="@+id/unlock_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_sm"
+                    android:accessibilityLiveRegion="polite"
+                    android:gravity="center_horizontal"
+                    android:text="@string/unlock_unlocking"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/unlock_other"
+                    style="@style/Widget.SVault.Button.Ghost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/sv_space_sm"
+                    android:text="@string/unlock_other" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <app.svault.android.ui.ProgressOverlay
+        android:id="@+id/unlock_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

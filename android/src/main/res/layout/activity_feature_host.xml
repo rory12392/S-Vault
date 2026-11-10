@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FeatureHostActivity：Top app bar＋模組的 Fragment；載入失敗時顯示 EmptyState -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sv_host_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/sv_host_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationContentDescription="@string/sv_navigate_up"
+        app:navigationIcon="@drawable/sv_ic_arrow_back" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/sv_host_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <app.svault.android.ui.EmptyState
+        android:id="@+id/sv_host_error"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone" />
+</LinearLayout>

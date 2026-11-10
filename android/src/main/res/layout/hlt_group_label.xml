@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 重複使用的密碼的一組（「共用同一個密碼（n 筆）」）：android 的設定式清單沒有卡片，用小標題把共用同一密碼的條目分在一起（D-HLT-07） -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/sv_space_lg"
+    android:paddingTop="@dimen/sv_space_md"
+    android:paddingBottom="@dimen/sv_space_xs"
+    android:textAppearance="?attr/textAppearanceLabelLarge"
+    android:textColor="?attr/colorOnSurfaceVariant" />

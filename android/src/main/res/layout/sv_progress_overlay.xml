@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ProgressOverlay：遮住下方畫面並鎖住操作，卡片中說明在做什麼。根元素是 ui.ProgressOverlay -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/sv_space_xl">
+
+        <LinearLayout
+            android:id="@+id/sv_overlay_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/sv_space_xl">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/sv_overlay_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
+                android:indeterminate="true" />
+
+            <TextView
+                android:id="@+id/sv_overlay_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_sm"
+                android:importantForAccessibility="no"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="?attr/colorOnSurface"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/sv_overlay_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_lg"
+                android:gravity="center"
+                android:importantForAccessibility="no"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurface" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</merge>

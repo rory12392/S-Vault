@@ -1,0 +1,1004 @@
+/*
+ * 共用元件樣式。只引用 theme-*.css 的 -sv-* 顏色；px 值只能用尺寸白名單
+ * （0 1 2 4 8 12 14 16 20 24 32 48 220 360），由 scripts/check-tokens.ps1 檢查。
+ * 焦點框一律用背景圖層畫（外層 primary 2px），不用 border，避免聚焦時內容位移。
+ */
+
+/* ---------- 字型與文字 ---------- */
+.root {
+    -fx-font-family: "Microsoft JhengHei UI", "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: -sv-bg;
+}
+.label {
+    -fx-text-fill: -sv-fg;
+}
+.sv-mono,
+.sv-mono .text {
+    -fx-font-family: "Cascadia Mono", "Consolas", monospace;
+}
+.sv-page-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+.sv-section-title,
+.sv-toolbar-title,
+.sv-dialog-title,
+.sv-empty-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.sv-caption,
+.sv-toolbar-status,
+.sv-field-row-label,
+.sv-settings-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-fg-muted;
+}
+.text-input {
+    -fx-prompt-text-fill: -sv-fg-muted;
+}
+.text-input .text,
+.sv-text {
+    -fx-fill: -sv-fg;
+}
+.sv-highlight {
+    -fx-fill: -sv-primary;
+    -fx-font-weight: bold;
+}
+
+/* ---------- 圖示的顏色（形狀在 icons.css） ---------- */
+.sv-button-primary .sv-icon { -fx-background-color: -sv-on-primary; }
+.sv-button-danger .sv-icon { -fx-background-color: -sv-on-danger; }
+.sv-button-ghost .sv-icon { -fx-background-color: -sv-primary; }
+.sv-empty-state .sv-icon { -fx-background-color: -sv-fg-muted; }
+.sv-search-field > .sv-icon { -fx-background-color: -sv-fg-muted; }
+.sv-entry-badge .sv-icon { -fx-background-color: -sv-primary; }
+.sv-banner-info .sv-icon, .sv-toast-info .sv-icon { -fx-background-color: -sv-on-primary-container; }
+.sv-banner-warning .sv-icon { -fx-background-color: -sv-on-warning-container; }
+.sv-banner-error .sv-icon, .sv-toast-error .sv-icon { -fx-background-color: -sv-on-danger-container; }
+.sv-toast-success .sv-icon { -fx-background-color: -sv-on-success-container; }
+.sv-icon-button:copied .sv-icon { -fx-background-color: -sv-success; }
+
+/* ---------- Button ---------- */
+.sv-button {
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-padding: 0px 12px;
+    -fx-graphic-text-gap: 8px;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-background-insets: 0px;
+    -fx-cursor: hand;
+}
+.sv-button-primary {
+    -fx-background-color: -sv-primary;
+    -fx-text-fill: -sv-on-primary;
+}
+.sv-button-danger {
+    -fx-background-color: -sv-danger;
+    -fx-text-fill: -sv-on-danger;
+}
+/* 主要與危險按鈕的滑過、按下：疊一層半透明陰影色變暗，不另外定義顏色 */
+.sv-button-primary:hover { -fx-background-color: -sv-primary, -sv-shadow; }
+.sv-button-danger:hover { -fx-background-color: -sv-danger, -sv-shadow; }
+.sv-button-primary:armed { -fx-background-color: -sv-primary, -sv-shadow, -sv-shadow; }
+.sv-button-danger:armed { -fx-background-color: -sv-danger, -sv-shadow, -sv-shadow; }
+.sv-button-primary:focused {
+    -fx-background-color: -sv-primary, -sv-surface, -sv-primary;
+    -fx-background-insets: 0px, 2px, 4px;
+}
+.sv-button-danger:focused {
+    -fx-background-color: -sv-danger, -sv-surface, -sv-danger;
+    -fx-background-insets: 0px, 2px, 4px;
+}
+.sv-button-secondary {
+    -fx-background-color: -sv-border-strong, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-text-fill: -sv-fg;
+}
+.sv-button-secondary:hover { -fx-background-color: -sv-border-strong, -sv-surface-alt; }
+.sv-button-secondary:armed { -fx-background-color: -sv-border-strong, -sv-border; }
+.sv-button-secondary:focused {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.sv-button-ghost,
+.sv-icon-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -sv-primary;
+}
+.sv-button-ghost:hover,
+.sv-icon-button:hover { -fx-background-color: -sv-surface-alt; }
+.sv-button-ghost:armed,
+.sv-icon-button:armed { -fx-background-color: -sv-border; }
+.sv-button-ghost:focused,
+.sv-icon-button:focused {
+    -fx-background-color: -sv-primary, -sv-surface-alt;
+    -fx-background-insets: 0px, 2px;
+}
+.sv-button:disabled,
+.sv-icon-button:disabled {
+    -fx-opacity: 0.4;
+}
+.sv-button:loading {
+    -fx-opacity: 1;
+}
+/* Modena 的轉圈點大小以 em 計算；字級 12、8 個點時在 20px 內才不會擠成一團 */
+.sv-button-spinner {
+    -fx-font-size: 12px;
+    -fx-indeterminate-segment-count: 8;
+    -fx-min-width: 20px;
+    -fx-pref-width: 20px;
+    -fx-max-width: 20px;
+    -fx-min-height: 20px;
+    -fx-pref-height: 20px;
+    -fx-max-height: 20px;
+    -fx-progress-color: -sv-on-primary;
+}
+.sv-button-secondary .sv-button-spinner,
+.sv-button-ghost .sv-button-spinner { -fx-progress-color: -sv-primary; }
+.sv-button-danger .sv-button-spinner { -fx-progress-color: -sv-on-danger; }
+
+/* ---------- IconButton ---------- */
+.sv-icon-button {
+    -fx-min-width: 32px;
+    -fx-pref-width: 32px;
+    -fx-max-width: 32px;
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+.sv-icon-button .sv-icon { -fx-background-color: -sv-fg; }
+.sv-icon-button-small .sv-icon {
+    -fx-min-width: 16px;
+    -fx-pref-width: 16px;
+    -fx-max-width: 16px;
+    -fx-min-height: 16px;
+    -fx-pref-height: 16px;
+    -fx-max-height: 16px;
+}
+
+/* ---------- 文字欄位（TextField、PasswordField、SearchField） ---------- */
+.text-field,
+.password-field {
+    -fx-pref-height: 32px;
+    -fx-min-height: 32px;
+    -fx-padding: 0px 12px;
+    -fx-background-color: -sv-border-strong, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: -sv-fg;
+    -fx-highlight-fill: -sv-primary-container;
+    -fx-highlight-text-fill: -sv-on-primary-container;
+}
+.text-field:focused,
+.password-field:focused {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.text-input.sv-error,
+.sv-password-input.sv-error .text-input {
+    -fx-background-color: -sv-danger, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.text-input:disabled {
+    -fx-opacity: 0.4;
+}
+.sv-form-field {
+    -fx-spacing: 4px;
+}
+.sv-field-label {
+    -fx-font-size: 14px;
+}
+.sv-field-error {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-danger;
+}
+.sv-form {
+    -fx-spacing: 16px;
+}
+.sv-password-row {
+    -fx-spacing: 4px;
+    -fx-alignment: center-left;
+}
+.sv-password-input {
+    -fx-spacing: 8px;
+}
+.sv-search-field {
+    -fx-alignment: center-left;
+    -fx-spacing: 8px;
+    -fx-padding: 0px 4px 0px 12px;
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-background-color: -sv-border-strong, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+}
+.sv-search-field:focus-within {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.sv-search-field .sv-search-input,
+.sv-search-field .sv-search-input:focused {
+    -fx-background-color: transparent;
+    -fx-padding: 0px;
+}
+.sv-search-field .sv-icon-button {
+    -fx-min-width: 24px;
+    -fx-pref-width: 24px;
+    -fx-max-width: 24px;
+    -fx-min-height: 24px;
+    -fx-pref-height: 24px;
+    -fx-max-height: 24px;
+}
+
+/* ---------- StrengthMeter ---------- */
+.sv-strength {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+.sv-strength-bar {
+    -fx-spacing: 4px;
+    -fx-alignment: center-left;
+}
+.sv-strength-segment {
+    -fx-min-height: 4px;
+    -fx-pref-height: 4px;
+    -fx-max-height: 4px;
+    -fx-background-radius: 4px;
+    -fx-background-color: -sv-border;
+}
+.sv-strength-weak .sv-strength-segment:filled { -fx-background-color: -sv-danger; }
+.sv-strength-medium .sv-strength-segment:filled { -fx-background-color: -sv-warning; }
+.sv-strength-strong .sv-strength-segment:filled { -fx-background-color: -sv-success; }
+.sv-strength-text {
+    -fx-font-size: 12px;
+    -fx-min-width: 16px;
+}
+.sv-strength-weak .sv-strength-text { -fx-text-fill: -sv-danger; }
+.sv-strength-medium .sv-strength-text { -fx-text-fill: -sv-warning; }
+.sv-strength-strong .sv-strength-text { -fx-text-fill: -sv-success; }
+
+/* ---------- 清單、EntryRow、群組樹 ---------- */
+.list-view,
+.tree-view {
+    -fx-background-color: -sv-border, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-padding: 1px;
+}
+.list-view:focused,
+.tree-view:focused {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+    -fx-padding: 2px;
+}
+.list-cell,
+.tree-cell {
+    -fx-background-color: -sv-surface;
+    -fx-text-fill: -sv-fg;
+}
+.list-cell:filled:hover,
+.tree-cell:filled:hover {
+    -fx-background-color: -sv-surface-alt;
+}
+.list-cell:filled:selected,
+.tree-cell:filled:selected {
+    -fx-background-color: -sv-surface-alt;
+}
+.list-view:focused .list-cell:filled:selected,
+.tree-view:focused .tree-cell:filled:selected {
+    -fx-background-color: -sv-primary-container;
+    -fx-text-fill: -sv-on-primary-container;
+}
+.list-view:focused .list-cell:filled:focused:selected,
+.tree-view:focused .tree-cell:filled:focused:selected {
+    -fx-background-color: -sv-primary, -sv-primary-container;
+    -fx-background-insets: 0px, 0px 0px 0px 4px;
+}
+.tree-cell {
+    -fx-padding: 8px 12px;
+}
+.tree-cell > .tree-disclosure-node > .arrow {
+    -fx-background-color: -sv-fg-muted;
+}
+.sv-entry-list {
+    -fx-fixed-cell-size: 48px;
+}
+.sv-entry-cell {
+    -fx-padding: 0px;
+}
+.sv-entry-row {
+    -fx-min-height: 48px;
+    -fx-pref-height: 48px;
+    -fx-padding: 0px 8px 0px 12px;
+    -fx-spacing: 12px;
+    -fx-alignment: center-left;
+}
+.sv-card > .sv-entry-row {
+    -fx-border-color: transparent transparent -sv-border transparent;
+}
+.sv-entry-badge {
+    -fx-min-width: 32px;
+    -fx-pref-width: 32px;
+    -fx-max-width: 32px;
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-background-color: -sv-primary-container;
+    -fx-background-radius: 8px;
+}
+.sv-entry-texts {
+    -fx-alignment: center-left;
+}
+.sv-entry-title .text {
+    -fx-font-size: 14px;
+}
+.sv-entry-username .text {
+    -fx-font-size: 12px;
+}
+.sv-entry-username .sv-text {
+    -fx-fill: -sv-fg-muted;
+}
+.list-view:focused .list-cell:selected .sv-text,
+.list-view:focused .list-cell:selected .sv-entry-username .sv-text {
+    -fx-fill: -sv-on-primary-container;
+}
+
+/* ---------- FieldRow ---------- */
+.sv-field-row {
+    -fx-padding: 8px 8px 8px 12px;
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+    -fx-border-color: transparent transparent -sv-border transparent;
+}
+.sv-field-row-texts {
+    -fx-spacing: 2px;
+}
+.sv-field-row-actions {
+    -fx-spacing: 4px;
+    -fx-alignment: center-right;
+}
+.sv-field-row-value {
+    -fx-font-size: 14px;
+}
+
+/* ---------- Dialog ---------- */
+.dialog-pane {
+    -fx-background-color: -sv-surface;
+    -fx-padding: 0px;
+}
+.dialog-pane > .content.sv-dialog-content,
+.sv-dialog-content {
+    -fx-padding: 24px 24px 16px 24px;
+    -fx-spacing: 8px;
+}
+.sv-dialog-body {
+    -fx-text-fill: -sv-fg-muted;
+    -fx-max-width: 360px;
+}
+.dialog-pane > .button-bar > .container {
+    -fx-padding: 0px 24px 24px 24px;
+}
+.dialog-pane .button-bar .button {
+    -fx-min-width: 48px;
+}
+
+/* ---------- Toast ---------- */
+.sv-toast-stack {
+    -fx-spacing: 8px;
+    -fx-padding: 24px;
+}
+.sv-toast {
+    -fx-spacing: 12px;
+    -fx-alignment: center-left;
+    -fx-padding: 12px 8px 12px 16px;
+    -fx-background-radius: 12px;
+    -fx-max-width: 360px;
+    -fx-pref-width: 360px;
+    -fx-effect: dropshadow(gaussian, -sv-shadow, 12, 0, 0, 2);
+}
+.sv-toast-info { -fx-background-color: -sv-primary-container; }
+.sv-toast-success { -fx-background-color: -sv-success-container; }
+.sv-toast-error { -fx-background-color: -sv-danger-container; }
+.sv-toast-info .label { -fx-text-fill: -sv-on-primary-container; }
+.sv-toast-success .label { -fx-text-fill: -sv-on-success-container; }
+.sv-toast-error .label { -fx-text-fill: -sv-on-danger-container; }
+.sv-toast-info .sv-icon-button .sv-icon { -fx-background-color: -sv-on-primary-container; }
+.sv-toast-success .sv-icon-button .sv-icon { -fx-background-color: -sv-on-success-container; }
+.sv-toast-error .sv-icon-button .sv-icon { -fx-background-color: -sv-on-danger-container; }
+
+/* ---------- Banner ---------- */
+.sv-banner {
+    -fx-spacing: 12px;
+    -fx-alignment: center-left;
+    -fx-padding: 8px 12px;
+    -fx-min-height: 48px;
+    -fx-background-radius: 8px;
+}
+.sv-banner-info { -fx-background-color: -sv-primary-container; }
+.sv-banner-warning { -fx-background-color: -sv-warning-container; }
+.sv-banner-error { -fx-background-color: -sv-danger-container; }
+.sv-banner-info .sv-banner-text { -fx-text-fill: -sv-on-primary-container; }
+.sv-banner-warning .sv-banner-text { -fx-text-fill: -sv-on-warning-container; }
+.sv-banner-error .sv-banner-text { -fx-text-fill: -sv-on-danger-container; }
+
+/* ---------- ProgressOverlay ---------- */
+.sv-progress-overlay {
+    -fx-background-color: -sv-shadow;
+}
+.sv-progress-card {
+    -fx-background-color: -sv-surface;
+    -fx-background-radius: 12px;
+    -fx-padding: 24px;
+    -fx-spacing: 12px;
+    -fx-alignment: center;
+    -fx-min-width: 360px;
+    -fx-max-width: 360px;
+    -fx-effect: dropshadow(gaussian, -sv-shadow, 12, 0, 0, 2);
+}
+.sv-progress-card .progress-indicator {
+    -fx-progress-color: -sv-primary;
+}
+.sv-progress-bar {
+    -fx-pref-width: 220px;
+}
+.sv-progress-bar > .bar {
+    -fx-background-color: -sv-primary;
+    -fx-background-insets: 0px;
+    -fx-background-radius: 4px;
+}
+.sv-progress-bar > .track {
+    -fx-background-color: -sv-surface-alt;
+    -fx-background-insets: 0px;
+    -fx-background-radius: 4px;
+}
+.sv-progress-text {
+    -fx-text-alignment: center;
+}
+.sv-progress-percent {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-fg-muted;
+}
+
+/* ---------- EmptyState ---------- */
+.sv-empty-state {
+    -fx-alignment: center;
+    -fx-spacing: 12px;
+    -fx-padding: 32px 24px;
+}
+.sv-empty-title,
+.sv-empty-description {
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-max-width: 360px;
+}
+.sv-empty-description {
+    -fx-text-fill: -sv-fg-muted;
+}
+
+/* ---------- DiffRow ---------- */
+.sv-diff-row {
+    -fx-spacing: 8px;
+    -fx-padding: 8px 0px;
+}
+.sv-diff-field {
+    -fx-font-weight: bold;
+}
+.sv-diff-options {
+    -fx-spacing: 12px;
+}
+.toggle-button.sv-diff-option {
+    -fx-alignment: top-left;
+    -fx-padding: 12px;
+    -fx-background-color: -sv-border, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+.toggle-button.sv-diff-option:hover {
+    -fx-background-color: -sv-border-strong, -sv-surface-alt;
+}
+.toggle-button.sv-diff-option:selected {
+    -fx-background-color: -sv-primary, -sv-primary-container;
+    -fx-background-insets: 0px, 2px;
+}
+.toggle-button.sv-diff-option:focused {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.toggle-button.sv-diff-option:selected:focused {
+    -fx-background-color: -sv-primary, -sv-surface, -sv-primary-container;
+    -fx-background-insets: 0px, 2px, 4px;
+}
+.sv-diff-side {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-fg-muted;
+}
+.sv-diff-option:selected .label {
+    -fx-text-fill: -sv-on-primary-container;
+}
+.sv-diff-header {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+    -fx-min-height: 32px;
+}
+.sv-diff-row:missing .sv-diff-field {
+    -fx-text-fill: -sv-danger;
+}
+.sv-diff-box {
+    -fx-spacing: 4px;
+}
+.sv-diff-time {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-fg-muted;
+}
+.sv-diff-secret {
+    -fx-font-family: "Cascadia Mono", "Consolas", monospace;
+}
+.sv-diff-check { -fx-background-color: -sv-primary; }
+.sv-diff-option:selected .sv-diff-check { -fx-background-color: -sv-on-primary-container; }
+
+/* ---------- 衝突對照 ---------- */
+.sv-conflict-content {
+    -fx-padding: 24px 24px 16px 24px;
+    -fx-spacing: 12px;
+}
+.sv-conflict-quick {
+    -fx-spacing: 8px;
+}
+.sv-conflict-rows {
+    -fx-spacing: 8px;
+    -fx-padding: 0px 8px 0px 0px;
+}
+.sv-conflict-scroll,
+.sv-conflict-scroll > .viewport {
+    -fx-background-color: -sv-surface;
+}
+.sv-conflict-missing {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-danger;
+}
+
+/* ---------- SettingsRow ---------- */
+.sv-settings-row {
+    -fx-spacing: 16px;
+    -fx-alignment: center-left;
+    -fx-padding: 12px 16px;
+    -fx-min-height: 48px;
+    -fx-border-color: transparent transparent -sv-border transparent;
+}
+.sv-settings-texts {
+    -fx-spacing: 2px;
+    -fx-alignment: center-left;
+}
+.sv-settings-number {
+    -fx-pref-width: 220px;
+}
+
+/* ---------- 其他內建控制項（改接 token 後的細節） ---------- */
+.check-box > .box {
+    -fx-background-color: -sv-border-strong, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 4px;
+}
+.check-box:selected > .box {
+    -fx-background-color: -sv-primary;
+}
+.check-box:selected > .box > .mark {
+    -fx-background-color: -sv-on-primary;
+}
+.check-box:focused > .box {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.check-box:selected:focused > .box {
+    -fx-background-color: -sv-primary, -sv-surface, -sv-primary;
+    -fx-background-insets: 0px, 2px, 4px;
+}
+/* Spinner 用型別選擇器：ProgressIndicator 內部也有一個 style class 叫 spinner 的區塊 */
+.combo-box-base,
+Spinner {
+    -fx-background-color: -sv-border-strong, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+    -fx-min-height: 32px;
+}
+.combo-box-base:focused,
+Spinner:focused {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.combo-box > .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -sv-fg;
+    -fx-padding: 0px 8px 0px 12px;
+}
+Spinner .text-field,
+Spinner .text-field:focused {
+    -fx-background-color: transparent;
+}
+.combo-box-base > .arrow-button > .arrow,
+Spinner .increment-arrow-button > .increment-arrow,
+Spinner .decrement-arrow-button > .decrement-arrow {
+    -fx-background-color: -sv-fg-muted;
+}
+Spinner .increment-arrow-button,
+Spinner .decrement-arrow-button {
+    -fx-background-color: transparent;
+}
+.context-menu,
+.combo-box-popup > .list-view {
+    -fx-background-color: -sv-border, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, -sv-shadow, 12, 0, 0, 2);
+}
+.menu-item:focused {
+    -fx-background-color: -sv-primary-container;
+}
+.menu-item:focused > .label {
+    -fx-text-fill: -sv-on-primary-container;
+}
+.tooltip {
+    -fx-background-color: -sv-fg;
+    -fx-text-fill: -sv-bg;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4px;
+    -fx-padding: 4px 8px;
+}
+.scroll-pane,
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+.scroll-bar > .thumb {
+    -fx-background-color: -sv-border-strong;
+    -fx-background-radius: 4px;
+    -fx-background-insets: 2px;
+}
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0px;
+}
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-padding: 0px;
+    -fx-shape: null;
+}
+.split-pane {
+    -fx-background-color: -sv-bg;
+    -fx-padding: 0px;
+}
+.split-pane > .split-pane-divider {
+    -fx-background-color: -sv-border;
+    -fx-padding: 0px 1px 0px 0px;
+}
+.toggle-button {
+    -fx-background-color: -sv-border-strong, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-text-fill: -sv-fg;
+    -fx-min-height: 32px;
+    -fx-padding: 0px 12px;
+}
+.toggle-button:selected {
+    -fx-background-color: -sv-primary, -sv-primary-container;
+    -fx-text-fill: -sv-on-primary-container;
+}
+.toggle-button:focused {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.toggle-button:selected:focused {
+    -fx-background-color: -sv-primary, -sv-surface, -sv-primary-container;
+    -fx-background-insets: 0px, 2px, 4px;
+}
+.sv-segmented > .toggle-button {
+    -fx-background-radius: 0px;
+}
+.sv-segmented > .toggle-button:first-child {
+    -fx-background-radius: 8px 0px 0px 8px;
+}
+.sv-segmented > .toggle-button:last-child {
+    -fx-background-radius: 0px 8px 8px 0px;
+}
+
+/* ---------- 外框（AppShell）與版面 ---------- */
+.sv-toolbar {
+    -fx-spacing: 12px;
+    -fx-padding: 8px 16px;
+    -fx-min-height: 48px;
+    -fx-background-color: -sv-surface;
+    -fx-border-color: transparent transparent -sv-border transparent;
+}
+.sv-toolbar-menu {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+    -fx-min-height: 32px;
+    -fx-padding: 0px 4px;
+}
+.sv-toolbar-menu:hover,
+.sv-toolbar-menu:showing {
+    -fx-background-color: -sv-surface-alt;
+}
+.sv-toolbar-menu:focused {
+    -fx-background-color: -sv-primary, -sv-surface-alt;
+    -fx-background-insets: 0px, 2px;
+}
+.sv-toolbar-menu > .arrow-button {
+    -fx-padding: 0px;
+}
+.sv-toolbar-menu > .arrow-button > .arrow {
+    -fx-padding: 0px;
+    -fx-shape: null;
+}
+.sv-columns {
+    -fx-background-color: -sv-bg;
+}
+.sv-column-groups {
+    -fx-background-color: -sv-bg;
+    -fx-padding: 12px 8px 12px 12px;
+}
+.sv-column-groups .tree-view,
+.sv-column-groups .tree-view:focused {
+    -fx-background-color: transparent;
+}
+.sv-column-groups .tree-cell {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+}
+.sv-column-groups .tree-cell:filled:hover {
+    -fx-background-color: -sv-surface-alt;
+}
+.sv-column-groups .tree-cell:filled:selected {
+    -fx-background-color: -sv-surface-alt;
+}
+.sv-column-groups .tree-view:focused .tree-cell:filled:selected {
+    -fx-background-color: -sv-primary-container;
+}
+.sv-column-list,
+.sv-column-detail {
+    -fx-background-color: -sv-surface;
+}
+.sv-list-pane {
+    -fx-spacing: 8px;
+    -fx-padding: 12px;
+}
+.sv-list-header {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+.sv-centered {
+    -fx-background-color: -sv-bg;
+    -fx-padding: 48px 24px 24px 24px;
+}
+.sv-centered-column {
+    -fx-background-color: -sv-surface;
+    -fx-background-radius: 12px;
+    -fx-padding: 32px;
+    -fx-spacing: 16px;
+    -fx-border-color: -sv-border;
+    -fx-border-radius: 12px;
+}
+.sv-centered-scroll,
+.sv-centered-scroll > .viewport {
+    -fx-background-color: -sv-bg;
+}
+
+/* ---------- 歡迎、建立、解鎖（T-07） ---------- */
+.sv-form-compact {
+    -fx-spacing: 12px;
+}
+.sv-brand {
+    -fx-spacing: 12px;
+    -fx-alignment: center-left;
+}
+.sv-brand .sv-icon {
+    -fx-background-color: -sv-primary;
+}
+.sv-button-row,
+.sv-location-row {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+.sv-field-warning {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-warning;
+}
+.sv-recent-row {
+    -fx-spacing: 4px;
+    -fx-alignment: center-left;
+}
+.sv-recent-top {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+.sv-recent-name {
+    -fx-font-weight: bold;
+}
+.list-view:focused .list-cell:filled:selected .sv-recent-name,
+.list-view:focused .list-cell:filled:selected .sv-caption {
+    -fx-text-fill: -sv-on-primary-container;
+}
+
+.sv-page-header {
+    -fx-spacing: 12px;
+    -fx-alignment: center-left;
+    -fx-padding: 0px 0px 8px 0px;
+}
+.sv-page-actions {
+    -fx-spacing: 8px;
+    -fx-alignment: center-right;
+}
+.sv-card {
+    -fx-background-color: -sv-surface;
+    -fx-border-color: -sv-border;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+}
+
+/* ---------- 解鎖後的三欄（T-10） ---------- */
+.sv-group-row {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+.sv-column-groups .tree-cell {
+    -fx-padding: 8px 4px;
+}
+.sv-group-row .sv-icon {
+    -fx-background-color: -sv-fg-muted;
+}
+.sv-column-groups .tree-view:focused .tree-cell:filled:selected .sv-caption,
+.sv-column-groups .tree-view:focused .tree-cell:filled:selected .sv-group-name {
+    -fx-text-fill: -sv-on-primary-container;
+}
+.sv-column-groups .tree-cell:drop-target {
+    -fx-background-color: -sv-primary, -sv-primary-container;
+    -fx-background-insets: 0px, 2px;
+}
+.sv-banner-slot {
+    -fx-spacing: 8px;
+}
+.sv-list-loading {
+    -fx-spacing: 12px;
+    -fx-alignment: center;
+}
+.sv-inline-spinner {
+    -fx-progress-color: -sv-primary;
+}
+.sv-detail-pane {
+    -fx-padding: 16px 24px 16px 24px;
+    -fx-spacing: 8px;
+}
+.sv-detail-pane > .sv-empty-state {
+    -fx-padding: 48px 0px 0px 0px;
+}
+.sv-detail-scroll,
+.sv-detail-scroll > .viewport {
+    -fx-background-color: -sv-surface;
+}
+.sv-detail-body {
+    -fx-spacing: 12px;
+    -fx-padding: 0px 0px 16px 0px;
+}
+.sv-detail-pane .sv-form {
+    -fx-padding: 0px 4px 16px 0px;
+}
+.sv-password-actions {
+    -fx-spacing: 8px;
+    -fx-alignment: top-left;
+}
+.text-area {
+    -fx-background-color: -sv-border-strong, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: -sv-fg;
+    -fx-highlight-fill: -sv-primary-container;
+    -fx-highlight-text-fill: -sv-on-primary-container;
+}
+.text-area:focused {
+    -fx-background-color: -sv-primary, -sv-surface;
+    -fx-background-insets: 0px, 2px;
+}
+.text-area .content {
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+}
+.text-area .scroll-pane,
+.text-area .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ---------- 展示頁（開發版） ---------- */
+.sv-gallery {
+    -fx-padding: 24px;
+    -fx-spacing: 24px;
+}
+.sv-gallery-section {
+    -fx-spacing: 12px;
+}
+.sv-stack {
+    -fx-spacing: 12px;
+}
+.sv-flow {
+    -fx-hgap: 8px;
+    -fx-vgap: 8px;
+}
+
+/* ---------- 設定與關於（T-23） ---------- */
+.sv-column-page {
+    -fx-background-color: -sv-surface;
+}
+.sv-settings-page {
+    -fx-padding: 16px 24px 0px 24px;
+    -fx-spacing: 8px;
+}
+/* 功能模組頁面的外框（T-30）：和設定頁同樣的邊距，內容由模組排 */
+.sv-module-page {
+    -fx-padding: 16px 24px 16px 24px;
+    -fx-spacing: 8px;
+}
+.sv-settings-scroll,
+.sv-settings-scroll > .viewport,
+.sv-about-scroll,
+.sv-about-scroll > .viewport {
+    -fx-background-color: -sv-surface;
+}
+.sv-settings-body {
+    -fx-spacing: 24px;
+    -fx-padding: 0px 4px 24px 0px;
+}
+.sv-settings-section {
+    -fx-spacing: 8px;
+}
+.sv-settings-row-last {
+    -fx-border-color: transparent;
+}
+.sv-settings-error {
+    -fx-text-fill: -sv-danger;
+    -fx-padding: 12px 16px;
+}
+.sv-about-body {
+    -fx-spacing: 8px;
+    -fx-padding: 0px 4px 0px 0px;
+}
+.sv-about-data-dir {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+    -fx-padding: 8px 0px;
+}
+.sv-about-group {
+    -fx-font-weight: bold;
+    -fx-padding: 8px 0px 0px 0px;
+}
+.sv-about-item {
+    -fx-spacing: 4px;
+}
+.titled-pane > .title {
+    -fx-background-color: -sv-surface-alt;
+    -fx-background-radius: 8px;
+}
+.titled-pane:expanded > .title {
+    -fx-background-radius: 8px 8px 0px 0px;
+}
+.titled-pane > .title > .text {
+    -fx-fill: -sv-fg;
+}
+.titled-pane > .title > .arrow-button > .arrow {
+    -fx-background-color: -sv-fg-muted;
+}
+.titled-pane > .content {
+    -fx-background-color: -sv-surface;
+    -fx-border-color: -sv-border;
+    -fx-padding: 8px 12px;
+}
+.titled-pane:focused > .title {
+    -fx-background-color: -sv-primary, -sv-surface-alt;
+    -fx-background-insets: 0px, 2px;
+}

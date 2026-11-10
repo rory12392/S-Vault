@@ -1,0 +1,8 @@
+<!-- token-check-expect: android-values -->
+<resources>
+    <color name="brand">#1F5FAF</color>
+    <dimen name="gap">8dp</dimen>
+    <style name="Widget.Bad">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>

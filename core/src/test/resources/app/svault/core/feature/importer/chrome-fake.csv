@@ -1,0 +1,6 @@
+name,url,username,password,note
+example.com,https://www.example.com/login,alice@example.com,Fake-Pass-001,
+shop.example.org,https://shop.example.org/,bob,"pa,ss""word",
+forum.example.net,https://forum.example.net/,carol,Fake-Pass-003,"第一行，有逗號, comma
+第二行"
+,android://fakehash@com.example.app/,dave,Fake-Pass-004,

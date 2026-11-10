@@ -1,0 +1,5 @@
+name,url,username,password,note
+example.com,https://example.com/,alice,Fake-Pass-1,
+forum.example.net,https://forum.example.net/,carol,Fake-Pass-3,
+shop.example.org,https://shop.example.org/,bob,Fake-Pass-2,"第一行, 有逗號
+第二行"

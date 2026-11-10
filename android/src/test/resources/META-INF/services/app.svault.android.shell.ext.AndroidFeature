@@ -1,0 +1,4 @@
+app.svault.android.shell.fake.FakeAndroidModules$Alpha
+app.svault.android.shell.fake.FakeAndroidModules$BrokenConstructor
+app.svault.android.shell.fake.FakeAndroidModules$Beta
+app.svault.android.shell.fake.FakeAndroidModules$Faulty

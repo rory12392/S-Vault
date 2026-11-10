@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 首頁（群組清單）與條目清單共用的版面：Top app bar（上鎖＋選單）、
+     SearchBar（搜尋全部條目，按下展開 SearchView）、存檔中的進度條、「尚未同步」Banner、清單／空狀態／載入中、
+     右下「新增條目」FAB -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/page_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/page_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/page_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/entries_menu" />
+
+        <com.google.android.material.search.SearchBar
+            android:id="@+id/page_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/entries_search"
+            app:layout_scrollFlags="noScroll" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/page_saving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/entries_saving"
+            android:indeterminate="true"
+            android:visibility="gone" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <app.svault.android.ui.Banner
+            android:id="@+id/page_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/sv_space_lg"
+            android:layout_marginVertical="@dimen/sv_space_sm"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/page_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/page_empty_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:visibility="gone">
+
+                <app.svault.android.ui.EmptyState
+                    android:id="@+id/page_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/sv_space_lg" />
+            </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/page_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:indeterminate="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_md"
+                    android:accessibilityLiveRegion="polite"
+                    android:text="@string/entries_loading"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/page_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/sv_space_lg"
+        android:text="@string/entries_add"
+        app:icon="@drawable/sv_ic_add" />
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/page_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/entries_search"
+        app:layout_anchor="@id/page_search_bar">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/page_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <app.svault.android.ui.EmptyState
+                android:id="@+id/page_results_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:visibility="gone" />
+        </FrameLayout>
+    </com.google.android.material.search.SearchView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

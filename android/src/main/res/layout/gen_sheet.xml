@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 編輯畫面「產生」的底部 sheet（T-44）：標題「產生密碼」、和產生器頁相同的內容（gen_panel.xml）、
+     「取消」（ghost）＋「使用這個密碼」（primary，選項不合法時停用）。整個可以捲動：最大字體時內容比螢幕高 -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gen_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/sv_space_lg">
+
+        <TextView
+            android:id="@+id/gen_sheet_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/sv_space_md"
+            android:accessibilityHeading="true"
+            android:text="@string/gen_sheet_title"
+            android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+        <include layout="@layout/gen_panel" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_xl"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/gen_cancel"
+                style="@style/Widget.SVault.Button.Ghost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/sv_space_sm"
+                android:text="@string/gen_cancel" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/gen_use"
+                style="@style/Widget.SVault.Button.Primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gen_use" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

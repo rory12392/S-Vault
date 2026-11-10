@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 首頁群組清單的一列：圖示＋名稱＋條目數「n 筆」，整列可點；長按開群組選單。
+     縮排（子群組）由程式依層級加在左內距 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/sv_row_min_height"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/sv_space_lg"
+    android:paddingEnd="@dimen/sv_space_lg">
+
+    <ImageView
+        android:id="@+id/group_icon"
+        android:layout_width="@dimen/sv_icon"
+        android:layout_height="@dimen/sv_icon"
+        android:importantForAccessibility="no"
+        android:src="@drawable/sv_ic_folder"
+        app:tint="?attr/colorOnSurfaceVariant" />
+
+    <TextView
+        android:id="@+id/group_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/sv_space_lg"
+        android:layout_weight="1"
+        android:importantForAccessibility="no"
+        android:paddingVertical="@dimen/sv_space_sm"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
+        android:textColor="?attr/colorOnSurface" />
+
+    <TextView
+        android:id="@+id/group_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+</LinearLayout>

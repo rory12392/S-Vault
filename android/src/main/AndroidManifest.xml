@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 共用熱點：只在 dev 的核心任務修改。權限白名單見 Architecture §3，由 ManifestPermissionTest 檢查 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 只有外洩檢查（HLT）使用 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 生物辨識解鎖（BIO） -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <!-- 自動填入要查瀏覽器的簽署憑證（C-1）：Android 11 起看不到其他 App，只宣告「處理 https 網址的 App」，不要求
+         QUERY_ALL_PACKAGES -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <!-- 一般 App 的簽署憑證紀錄（I-5）：查不到憑證就不自動交出帳密（Codex B1），所以要看得到有桌面圖示的 App -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <!-- allowBackup=false：本機資料（基準、暫存、Keystore 加密的主密碼）不該被系統備份帶到別台裝置 -->
+    <application
+        android:name=".SvaultApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SVault">
+
+        <!-- 歡迎、建立、解鎖（T-08）：不顯示保管庫內容，沒有 FLAG_SECURE；只有歡迎畫面匯出（啟動器） -->
+        <activity
+            android:name=".shell.start.WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".shell.start.CreateVaultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shell.start.UnlockActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible" />
+        <!-- 備份還原（T-12）：只列備份時間，不顯示保管庫內容；解鎖中與檔案損壞（上鎖中）都從這裡選 -->
+        <activity
+            android:name=".shell.start.BackupActivity"
+            android:exported="false" />
+
+        <!-- 解鎖後的條目畫面（T-11）：首頁＝群組清單 → 條目清單 → 詳細 → 編輯；都繼承 SecureActivity（FLAG_SECURE） -->
+        <activity
+            android:name=".shell.entries.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shell.entries.EntryListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shell.entries.EntryDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".shell.entries.EntryEditActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 功能模組的頁面都在這裡以 Fragment 載入（Architecture §1.1）；不匯出，只有 App 自己能開 -->
+        <activity
+            android:name=".shell.FeatureHostActivity"
+            android:exported="false" />
+
+        <!-- 剪貼簿的備援清除（T-28）：App 行程被系統結束時由 AlarmManager 叫起，清掉 S-Vault 複製的密碼。
+             不匯出、沒有 intent-filter，只有 App 自己的 PendingIntent 叫得到（ReceiverManifestTest） -->
+        <receiver
+            android:name=".platform.ClipboardClearReceiver"
+            android:exported="false" />
+
+        <!-- 自動填入服務（AF，T-22 建立空殼）：系統要能綁定所以匯出，但只有持有 BIND_AUTOFILL_SERVICE 的系統能綁
+             （Architecture §3）。設定在 res/xml/autofill_service.xml，內容屬 AF 模組 -->
+        <service
+            android:name=".feature.autofill.SVaultAutofillService"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.autofill"
+                android:resource="@xml/autofill_service" />
+        </service>
+    </application>
+</manifest>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 設定頁的「生物辨識解鎖」段落（BIO，T-71、T-72）。狀態與說明合成一個可聚焦的區塊，
+     TalkBack 一次讀完；按鈕依目前的保管庫顯示（BioSettingsState）。文字在 BioSettingsFragment 設定，最大字體時換行 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/sv_space_lg"
+    android:paddingVertical="@dimen/sv_space_md">
+
+    <LinearLayout
+        android:id="@+id/bio_settings_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:minHeight="@dimen/sv_row_min_height"
+        android:orientation="vertical"
+        android:screenReaderFocusable="true">
+
+        <TextView
+            android:id="@+id/bio_settings_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/bio_settings_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_xs"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+    </LinearLayout>
+
+    <!-- 目前的保管庫還沒啟用、裝置支援時（T-72） -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bio_settings_enable"
+        style="@style/Widget.SVault.Button.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_sm"
+        android:text="@string/bio_settings_enable"
+        android:visibility="gone" />
+
+    <!-- 目前的保管庫已啟用時：只停這個保管庫 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bio_settings_disable"
+        style="@style/Widget.SVault.Button.Ghost.Danger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_sm"
+        android:text="@string/bio_settings_disable"
+        android:visibility="gone" />
+
+    <!-- 別的保管庫也有資料時：整台裝置一起停（T-71 的停用） -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bio_settings_disable_all"
+        style="@style/Widget.SVault.Button.Ghost.Danger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bio_settings_disable_all"
+        android:visibility="gone" />
+</LinearLayout>

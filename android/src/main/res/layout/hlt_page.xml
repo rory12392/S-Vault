@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 密碼健檢頁（T-53，內容順序同 desktop 的 T-52）：放在外殼的 FeatureHostActivity 裡（Top app bar「密碼健檢」
+     ＋返回、FLAG_SECURE），捲動與邊距由本頁自己排（§8.4）。摘要 → 「檢查外洩」（secondary）→ Banner → 外洩／弱／重複的區段
+     （HealthReportFragment 以 settings_section_header、settings_row 建立）或 EmptyState；計算中 ProgressOverlay -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hlt_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/hlt_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/sv_space_xl">
+
+            <TextView
+                android:id="@+id/hlt_summary_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityHeading="true"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingTop="@dimen/sv_space_lg"
+                android:paddingBottom="@dimen/sv_space_sm"
+                android:text="@string/hlt_summary_title"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorPrimary" />
+
+            <include
+                android:id="@+id/hlt_summary_weak"
+                layout="@layout/settings_row" />
+
+            <include
+                android:id="@+id/hlt_summary_reused"
+                layout="@layout/settings_row" />
+
+            <include
+                android:id="@+id/hlt_summary_breached"
+                layout="@layout/settings_row" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/hlt_check_breach"
+                style="@style/Widget.SVault.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sv_space_lg"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:text="@string/hlt_breach_check" />
+
+            <app.svault.android.ui.Banner
+                android:id="@+id/hlt_breach_failed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sv_space_lg"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:visibility="gone" />
+
+            <app.svault.android.ui.Banner
+                android:id="@+id/hlt_analyze_failed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sv_space_lg"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:visibility="gone" />
+
+            <!-- 外洩、弱、重複三個區段：每次狀態改變時重建 -->
+            <LinearLayout
+                android:id="@+id/hlt_sections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <app.svault.android.ui.EmptyState
+                android:id="@+id/hlt_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_xl"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <app.svault.android.ui.ProgressOverlay
+        android:id="@+id/hlt_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 尺寸 token。版面不得寫死 dp／sp，只能引用這裡；字級一律用 M3 textAppearance -->
+<resources>
+    <!-- 間距刻度 -->
+    <dimen name="sv_space_xs">4dp</dimen>
+    <dimen name="sv_space_sm">8dp</dimen>
+    <dimen name="sv_space_md">12dp</dimen>
+    <dimen name="sv_space_lg">16dp</dimen>
+    <dimen name="sv_space_xl">24dp</dimen>
+    <dimen name="sv_space_xxl">32dp</dimen>
+
+    <!-- 圓角：自繪的底色形狀用（與 M3 的 shapeAppearanceCornerSmall 相同）；標記 4。
+         卡片與對話框的 12 用 M3 預設，不另設 -->
+    <dimen name="sv_corner_tag">4dp</dimen>
+    <dimen name="sv_corner_small">8dp</dimen>
+
+    <!-- 元件尺寸（清單列 ≥ 56dp、觸控目標 ≥ 48dp） -->
+    <dimen name="sv_touch_target">48dp</dimen>
+    <dimen name="sv_row_min_height">56dp</dimen>
+    <dimen name="sv_icon">24dp</dimen>
+    <dimen name="sv_icon_large">48dp</dimen>
+    <dimen name="sv_border_width">1dp</dimen>
+    <!-- 強度條一段的高度；按鈕內 Spinner 的直徑與線寬（M3 按鈕圖示 18dp） -->
+    <dimen name="sv_meter_height">4dp</dimen>
+    <dimen name="sv_button_spinner">18dp</dimen>
+    <dimen name="sv_button_spinner_track">2dp</dimen>
+</resources>

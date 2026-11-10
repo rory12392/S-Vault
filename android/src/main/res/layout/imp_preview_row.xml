@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 匯入預覽的一筆（T-62，AC-14-1）：名稱、「可能重複」標記（warning，AC-14-4）、帳號、網址、密碼遮罩（固定 8 個「•」，
+     不透露長度）。手機寬度放不下 desktop 的五欄表格，改成一筆一塊；文字可換行，最大字體時不截斷 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/sv_row_min_height"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/sv_space_sm">
+
+    <TextView
+        android:id="@+id/imp_row_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+    <TextView
+        android:id="@+id/imp_row_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/sv_space_xs"
+        android:background="@drawable/sv_bg_rounded"
+        android:backgroundTint="@color/sv_warning_container"
+        android:paddingHorizontal="@dimen/sv_space_sm"
+        android:paddingVertical="@dimen/sv_space_xs"
+        android:text="@string/imp_preview_duplicate"
+        android:textAppearance="?attr/textAppearanceLabelLarge"
+        android:textColor="@color/sv_on_warning_container"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/imp_row_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+
+    <TextView
+        android:id="@+id/imp_row_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+
+    <TextView
+        android:id="@+id/imp_row_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+</LinearLayout>

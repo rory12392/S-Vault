@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 暫用圖示：Logo 提供前用 Material Symbols 的 lock -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/sv_primary" />
+    <foreground android:drawable="@drawable/sv_ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/sv_ic_launcher_foreground" />
+</adaptive-icon>

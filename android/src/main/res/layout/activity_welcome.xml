@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 歡迎／最近開啟：Top app bar、Banner（讀不到檔案）、最近開啟清單或 EmptyState、底部兩個按鈕 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/welcome_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/welcome_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/app_name" />
+
+    <app.svault.android.ui.Banner
+        android:id="@+id/welcome_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/sv_space_lg"
+        android:layout_marginBottom="@dimen/sv_space_sm"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/welcome_recent_block"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/welcome_recent_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityHeading="true"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingVertical="@dimen/sv_space_sm"
+                android:text="@string/welcome_recent"
+                android:textAppearance="?attr/textAppearanceTitleSmall"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/welcome_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <app.svault.android.ui.EmptyState
+            android:id="@+id/welcome_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/sv_space_lg">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/welcome_open"
+            style="@style/Widget.SVault.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_open" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/welcome_create"
+            style="@style/Widget.SVault.Button.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_sm"
+            android:text="@string/welcome_create" />
+    </LinearLayout>
+</LinearLayout>

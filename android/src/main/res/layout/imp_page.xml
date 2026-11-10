@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 從 Chrome 匯入（T-62，內容與文字同 desktop 的 T-61）：放在外殼的 FeatureHostActivity 裡（Top app bar
+     「從 Chrome 匯入」＋返回、FLAG_SECURE），捲動與邊距由本頁自己排（§8.4）。頂部步驟 → error Banner → 這一步的內容
+     （三段只顯示一段）；讀檔與匯入中 ProgressOverlay。手機上預覽改成一筆一列（名稱、帳號、網址、密碼遮罩），按鈕上下排 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/imp_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/imp_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingTop="@dimen/sv_space_lg"
+            android:paddingBottom="@dimen/sv_space_xl">
+
+            <!-- 「1 選擇檔案 → 2 預覽 → 3 完成」，目前這一步粗體＋primary（ImportWizardFragment 以 Span 標示） -->
+            <TextView
+                android:id="@+id/imp_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <app.svault.android.ui.Banner
+                android:id="@+id/imp_problem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:visibility="gone" />
+
+            <!-- 1 選擇檔案 -->
+            <LinearLayout
+                android:id="@+id/imp_choose_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:text="@string/imp_choose_intro"
+                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_sm"
+                    android:text="@string/imp_choose_how"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/imp_choose"
+                    style="@style/Widget.SVault.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_xl"
+                    android:text="@string/imp_choose_button" />
+            </LinearLayout>
+
+            <!-- 2 預覽 -->
+            <LinearLayout
+                android:id="@+id/imp_preview_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/imp_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:accessibilityHeading="true"
+                    android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+                <TextView
+                    android:id="@+id/imp_source"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <app.svault.android.ui.Banner
+                    android:id="@+id/imp_skipped"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_md"
+                    android:visibility="gone" />
+
+                <!-- 可能重複的說明與整批的選擇（AC-14-4） -->
+                <LinearLayout
+                    android:id="@+id/imp_duplicate_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_md"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/imp_duplicates"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                    <RadioGroup
+                        android:id="@+id/imp_dup_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/imp_dup_skip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/sv_touch_target"
+                            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/imp_dup_keep"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/sv_touch_target"
+                            android:text="@string/imp_duplicate_keep"
+                            android:textAppearance="?attr/textAppearanceBodyLarge" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/imp_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:accessibilityHeading="true"
+                    android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+                <!-- 前 10 筆：每筆 imp_preview_row -->
+                <LinearLayout
+                    android:id="@+id/imp_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:id="@+id/imp_nothing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:text="@string/imp_preview_nothing"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/imp_import"
+                    style="@style/Widget.SVault.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_xl" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/imp_rechoose"
+                    style="@style/Widget.SVault.Button.Secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_sm"
+                    android:text="@string/imp_preview_rechoose" />
+            </LinearLayout>
+
+            <!-- 3 完成（AC-14-3） -->
+            <LinearLayout
+                android:id="@+id/imp_done_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/imp_done"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:accessibilityHeading="true"
+                    android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+                <TextView
+                    android:id="@+id/imp_done_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <app.svault.android.ui.Banner
+                    android:id="@+id/imp_delete_csv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_md" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_lg"
+                    android:text="@string/imp_done_path"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <TextView
+                    android:id="@+id/imp_path"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/imp_again"
+                    style="@style/Widget.SVault.Button.Secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_xl"
+                    android:text="@string/imp_done_again" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <app.svault.android.ui.ProgressOverlay
+        android:id="@+id/imp_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

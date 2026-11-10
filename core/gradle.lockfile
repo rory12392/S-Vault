@@ -1,0 +1,27 @@
+# This is a Gradle generated file for dependency locking.
+# Manual edits can break the build and are not advised.
+# This file is expected to be part of source control.
+# To regenerate this file, run: ./gradlew :core:dependencies --write-locks
+com.fasterxml.jackson.core:jackson-annotations:2.22=compileClasspath,runtimeClasspath
+com.fasterxml.jackson.core:jackson-core:2.22.3=compileClasspath,runtimeClasspath
+com.fasterxml.jackson.core:jackson-databind:2.22.3=compileClasspath,runtimeClasspath
+com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.22.3=compileClasspath,runtimeClasspath
+com.fasterxml.jackson:jackson-bom:2.22.3=compileClasspath,runtimeClasspath
+com.fasterxml.woodstox:woodstox-core:7.3.0=compileClasspath,runtimeClasspath
+com.google.code.findbugs:jsr305:3.0.2=compileClasspath,runtimeClasspath
+com.google.errorprone:error_prone_annotations:2.50.0=compileClasspath,runtimeClasspath
+com.google.guava:failureaccess:1.0.3=compileClasspath,runtimeClasspath
+com.google.guava:guava:33.7.2-android=compileClasspath,runtimeClasspath
+com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava=compileClasspath,runtimeClasspath
+com.google.j2objc:j2objc-annotations:3.1=compileClasspath,runtimeClasspath
+com.nulab-inc:zxcvbn:1.9.0=compileClasspath,runtimeClasspath
+commons-codec:commons-codec:1.22.1=compileClasspath,runtimeClasspath
+org.bouncycastle:bcpkix-jdk18on:1.86=compileClasspath,runtimeClasspath
+org.bouncycastle:bcprov-jdk18on:1.86=compileClasspath,runtimeClasspath
+org.bouncycastle:bcutil-jdk18on:1.86=compileClasspath,runtimeClasspath
+org.codehaus.woodstox:stax2-api:4.3.1=compileClasspath,runtimeClasspath
+org.jspecify:jspecify:1.0.1=compileClasspath,runtimeClasspath
+org.linguafranca.pwdb:KeePassJava2-jackson:2.2.6=compileClasspath,runtimeClasspath
+org.linguafranca.pwdb:KeePassJava2-kdbx:2.2.6=compileClasspath,runtimeClasspath
+org.linguafranca.pwdb:database:2.2.6=compileClasspath,runtimeClasspath
+empty=

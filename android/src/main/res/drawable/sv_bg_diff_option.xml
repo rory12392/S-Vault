@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DiffRow 的一個選項：被選的一側用 primary-container（另有選取圓點，不只靠顏色） -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorPrimaryContainer" />
+            <stroke android:width="@dimen/sv_border_width" android:color="?attr/colorPrimary" />
+            <corners android:radius="@dimen/sv_corner_small" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorSurfaceContainer" />
+            <stroke android:width="@dimen/sv_border_width" android:color="?attr/colorOutlineVariant" />
+            <corners android:radius="@dimen/sv_corner_small" />
+        </shape>
+    </item>
+</selector>

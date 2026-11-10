@@ -1,0 +1,9 @@
+/* token-check-expect: css-color */
+.a { -fx-text-fill: #FF0000; }
+.b {
+    -fx-background-color: rgb(255, 0, 0);
+    -fx-border-color: derive(-sv-surface, -20%);
+    -fx-fill: ladder(-sv-bg, -sv-fg 49%, -sv-surface 50%);
+}
+.c { -fx-text-fill: white; }
+.d { -fx-background-color: -sv-surface, Gray; }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 啟用生物辨識解鎖：輸入主密碼的對話框欄位（BIO，T-72）。遮罩時不把主密碼交給無障礙服務、不交給其他自動填入服務
+     （SecretEditText，T-19、T-20）；saveEnabled=false：主密碼不進 onSaveInstanceState 的 Bundle -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/sv_space_xl"
+    android:paddingTop="@dimen/sv_space_sm">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bio_enable_password_layout"
+        style="@style/Widget.SVault.TextInputLayout.Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/bio_enable_password">
+
+        <app.svault.android.ui.SecretEditText
+            android:id="@+id/bio_enable_password"
+            style="@style/Widget.SVault.TextInputEditText.Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:saveEnabled="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+</FrameLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App 主題：M3 DayNight，色彩角色全部接到 S-Vault token。
+     不使用動態配色（D-17）：沒有呼叫 DynamicColors，色值固定、對比度事先驗證過。
+     深色值來自 values-night/sv_colors.xml，所以這裡只需要一份主題。 -->
+<resources>
+
+    <style name="Theme.SVault" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/sv_primary</item>
+        <item name="colorOnPrimary">@color/sv_on_primary</item>
+        <item name="colorPrimaryContainer">@color/sv_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/sv_on_primary_container</item>
+        <!-- 不另設輔色：secondary、tertiary 同 primary 系列 -->
+        <item name="colorSecondary">@color/sv_primary</item>
+        <item name="colorOnSecondary">@color/sv_on_primary</item>
+        <item name="colorSecondaryContainer">@color/sv_primary_container</item>
+        <item name="colorOnSecondaryContainer">@color/sv_on_primary_container</item>
+        <item name="colorTertiary">@color/sv_primary</item>
+        <item name="colorOnTertiary">@color/sv_on_primary</item>
+        <item name="colorTertiaryContainer">@color/sv_primary_container</item>
+        <item name="colorOnTertiaryContainer">@color/sv_on_primary_container</item>
+
+        <item name="android:colorBackground">@color/sv_bg</item>
+        <item name="colorOnBackground">@color/sv_fg</item>
+        <item name="colorSurface">@color/sv_bg</item>
+        <item name="colorOnSurface">@color/sv_fg</item>
+        <item name="colorSurfaceVariant">@color/sv_surface_alt</item>
+        <item name="colorOnSurfaceVariant">@color/sv_fg_muted</item>
+        <item name="colorSurfaceContainerLowest">@color/sv_surface</item>
+        <item name="colorSurfaceContainerLow">@color/sv_surface</item>
+        <item name="colorSurfaceContainer">@color/sv_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/sv_surface_alt</item>
+        <item name="colorSurfaceContainerHighest">@color/sv_surface_alt</item>
+        <!-- 對應表沒列、但 M3 元件會用到的角色：不接的話會用 M3 預設的紫色系。
+             Bright／Dim 同 bg；Snackbar 用的反色角色以 fg／bg 互換，動作文字用 primary-container（兩種模式對比都 ≥ 9） -->
+        <item name="colorSurfaceBright">@color/sv_bg</item>
+        <item name="colorSurfaceDim">@color/sv_bg</item>
+        <item name="colorSurfaceInverse">@color/sv_fg</item>
+        <item name="colorOnSurfaceInverse">@color/sv_bg</item>
+        <item name="colorPrimaryInverse">@color/sv_primary_container</item>
+
+        <item name="colorOutline">@color/sv_border_strong</item>
+        <item name="colorOutlineVariant">@color/sv_border</item>
+        <item name="colorError">@color/sv_danger</item>
+        <item name="colorOnError">@color/sv_on_danger</item>
+        <item name="colorErrorContainer">@color/sv_danger_container</item>
+        <item name="colorOnErrorContainer">@color/sv_on_danger_container</item>
+
+        <!-- 預設元件樣式改用 Widget.SVault.*，未指定 style 的元件也符合規範 -->
+        <item name="materialButtonStyle">@style/Widget.SVault.Button.Primary</item>
+        <item name="textInputStyle">@style/Widget.SVault.TextInputLayout</item>
+        <item name="toolbarStyle">@style/Widget.SVault.Toolbar</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.SVault.Dialog</item>
+    </style>
+
+    <!-- 對話框的按鈕：確認鈕依情況套 Danger（ConfirmDialogs） -->
+    <style name="ThemeOverlay.SVault.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.SVault.Button.Ghost</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.SVault.Button.Ghost</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.SVault.Button.Ghost</item>
+    </style>
+
+    <style name="ThemeOverlay.SVault.Dialog.Danger">
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.SVault.Button.Ghost.Danger</item>
+    </style>
+</resources>

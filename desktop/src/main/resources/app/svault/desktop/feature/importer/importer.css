@@ -1,0 +1,46 @@
+/* 匯入精靈（IMP）的版面（T-61）。只用 -sv-* token 與尺寸刻度 */
+.sv-imp-page {
+    -fx-spacing: 16px;
+    -fx-padding: 0px 4px 24px 0px;
+}
+.sv-imp-steps {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+.sv-imp-step {
+    -fx-text-fill: -sv-fg-muted;
+}
+.sv-imp-step-current {
+    -fx-text-fill: -sv-primary;
+    -fx-font-weight: bold;
+}
+.sv-imp-section {
+    -fx-spacing: 8px;
+}
+.sv-imp-table {
+    -fx-hgap: 12px;
+    -fx-vgap: 8px;
+    -fx-padding: 8px 12px;
+    -fx-background-color: -sv-border, -sv-surface;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+}
+.sv-imp-head {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sv-fg-muted;
+}
+.sv-imp-cell {
+    -fx-text-overrun: ellipsis;
+}
+/* 「可能重複」標記（DESIGN §2.2 warning；圓角是標記的 4） */
+.sv-imp-tag {
+    -fx-font-size: 12px;
+    -fx-padding: 0px 4px;
+    -fx-background-color: -sv-warning-container;
+    -fx-text-fill: -sv-on-warning-container;
+    -fx-background-radius: 4px;
+}
+.sv-imp-path {
+    -fx-font-family: "Cascadia Mono", "Consolas", monospace;
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 關於／開源授權（T-24）：App 名稱、版本、一行說明；開源授權清單（依 NOTICES.md 的段落分組，
+     展開一列看版本、授權、用途與全文）。清單在背景讀 core 資源檔的 NOTICES.md 複本（core.shell.Notices）。
+     android 不顯示資料位置：App 私有資料夾使用者打不開，複製路徑沒有用處 -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/about_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/sv_space_xl">
+
+        <TextView
+            android:id="@+id/about_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingTop="@dimen/sv_space_lg"
+            android:text="@string/app_name"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/about_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingTop="@dimen/sv_space_xs"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <TextView
+            android:id="@+id/about_tagline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingTop="@dimen/sv_space_sm"
+            android:text="@string/about_tagline"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/about_licenses_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingTop="@dimen/sv_space_xl"
+            android:text="@string/about_licenses"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="?attr/colorPrimary" />
+
+        <TextView
+            android:id="@+id/about_licenses_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingTop="@dimen/sv_space_xs"
+            android:text="@string/about_licenses_description"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/about_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/sv_space_xl"
+            android:indeterminate="true"
+            app:indicatorSize="@dimen/sv_icon" />
+
+        <TextView
+            android:id="@+id/about_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingTop="@dimen/sv_space_lg"
+            android:text="@string/about_load_failed"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorError"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/about_licenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

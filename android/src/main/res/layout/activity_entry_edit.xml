@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 新增／編輯條目：名稱（必填）、帳號、密碼（遮罩＋顯示切換＋強度條，旁邊放功能模組的
+     PasswordFieldAction）、網址、備註、群組下拉；「儲存」（primary）、「取消」。
+     所有欄位 saveEnabled=false：條目內容不進 onSaveInstanceState 的 Bundle（系統可能把它寫到磁碟），
+     畫面重建時由 ViewModel 帶過去；importantForAutofill=no：別的自動填入服務不要記下這裡的帳密 -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/edit_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/edit_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationContentDescription="@string/entries_cancel"
+            app:navigationIcon="@drawable/sv_ic_close" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:defaultFocusHighlightEnabled="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="noExcludeDescendants"
+            android:orientation="vertical"
+            android:padding="@dimen/sv_space_lg">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_name_layout"
+                style="@style/Widget.SVault.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/entries_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="text|textCapSentences"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_username_layout"
+                style="@style/Widget.SVault.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:hint="@string/entries_username">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="text|textNoSuggestions"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_password_layout"
+                style="@style/Widget.SVault.TextInputLayout.Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:hint="@string/entries_password">
+
+                <!-- 遮罩時不把條目密碼交給無障礙服務（T-19） -->
+                <app.svault.android.ui.SecretEditText
+                    android:id="@+id/edit_password"
+                    style="@style/Widget.SVault.TextInputEditText.Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <app.svault.android.ui.StrengthMeter
+                android:id="@+id/edit_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_xs" />
+
+            <!-- 功能模組的 PasswordFieldAction（GEN 的「產生」，M-03）；沒有模組時不顯示 -->
+            <LinearLayout
+                android:id="@+id/edit_password_actions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_url_layout"
+                style="@style/Widget.SVault.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:hint="@string/entries_url">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="textUri"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_notes_layout"
+                style="@style/Widget.SVault.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:hint="@string/entries_notes">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="3"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_group_layout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_md"
+                android:hint="@string/entries_group">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/edit_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:saveEnabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_save"
+                style="@style/Widget.SVault.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_xl"
+                android:text="@string/entries_save" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_cancel"
+                style="@style/Widget.SVault.Button.Ghost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_sm"
+                android:text="@string/entries_cancel" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

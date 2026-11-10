@@ -1,0 +1,66 @@
+/*
+ * 淺色主題：只放色彩 token（淺色欄），以及把 Modena 內建的顏色改接 token。
+ * 只有 theme-*.css 可以出現色碼；theme-dark.css 結構相同、值不同。
+ */
+.root {
+    -sv-bg: #F4F6F8;
+    -sv-surface: #FFFFFF;
+    -sv-surface-alt: #EBEEF2;
+    -sv-fg: #1A2230;
+    -sv-fg-muted: #5A6577;
+    -sv-border: #D9DEE5;
+    -sv-border-strong: #7D8797;
+    -sv-primary: #1F5FAF;
+    -sv-on-primary: #FFFFFF;
+    -sv-primary-container: #DCE8F8;
+    -sv-on-primary-container: #0E3466;
+    -sv-danger: #B42318;
+    -sv-on-danger: #FFFFFF;
+    -sv-danger-container: #FDE8E6;
+    -sv-on-danger-container: #7A1A10;
+    -sv-success: #1E7A46;
+    -sv-success-container: #E3F3EA;
+    -sv-on-success-container: #0F4A29;
+    -sv-warning: #8A5A00;
+    -sv-warning-container: #FFF1D6;
+    -sv-on-warning-container: #5C3B00;
+    -sv-shadow: #1A223029;
+
+    /* Modena 改接（兩份主題相同）。文字色直接指定，不用 Modena 依背景亮度推算的 ladder，
+       否則深色主題會把 -fx-light-text-color（＝on-primary）套到一般文字上。 */
+    -fx-base: -sv-surface;
+    -fx-background: -sv-bg;
+    -fx-control-inner-background: -sv-surface;
+    -fx-control-inner-background-alt: -sv-surface-alt;
+    -fx-accent: -sv-primary;
+    -fx-default-button: -sv-primary;
+    -fx-focus-color: -sv-primary;
+    -fx-faint-focus-color: transparent;
+    -fx-dark-text-color: -sv-fg;
+    -fx-mid-text-color: -sv-fg;
+    -fx-light-text-color: -sv-on-primary;
+    -fx-text-base-color: -sv-fg;
+    -fx-text-background-color: -sv-fg;
+    -fx-text-inner-color: -sv-fg;
+    -fx-prompt-text-fill: -sv-fg-muted;
+    -fx-text-box-border: -sv-border-strong;
+    -fx-box-border: -sv-border;
+    -fx-outer-border: -sv-border;
+    -fx-inner-border: transparent;
+    -fx-inner-border-horizontal: transparent;
+    -fx-inner-border-bottomup: transparent;
+    -fx-body-color: -sv-surface;
+    -fx-body-color-bottomup: -sv-surface;
+    -fx-body-color-to-right: -sv-surface;
+    -fx-shadow-highlight-color: transparent;
+    -fx-hover-base: -sv-surface-alt;
+    -fx-pressed-base: -sv-border;
+    -fx-mark-color: -sv-fg;
+    -fx-mark-highlight-color: transparent;
+    -fx-selection-bar: -sv-primary-container;
+    -fx-selection-bar-non-focused: -sv-surface-alt;
+    -fx-selection-bar-text: -sv-on-primary-container;
+    -fx-cell-hover-color: -sv-surface-alt;
+    -fx-cell-focus-inner-border: -sv-primary;
+    -fx-table-cell-border-color: -sv-border;
+}

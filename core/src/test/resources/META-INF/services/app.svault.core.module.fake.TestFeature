@@ -1,0 +1,7 @@
+app.svault.core.module.fake.FakeModules$Alpha
+app.svault.core.module.fake.FakeModules$BrokenConstructor
+app.svault.core.module.fake.FakeModules$Beta
+app.svault.core.module.fake.FakeModules$OffByDefault
+app.svault.core.module.fake.FakeModules$Faulty
+app.svault.core.module.fake.FakeModules$MissingClass
+app.svault.core.module.fake.FakeModules$DuplicateAlpha

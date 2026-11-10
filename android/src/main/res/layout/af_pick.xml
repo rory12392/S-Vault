@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自動填入的條目選擇頁（AF，T-83）：建議清單的「搜尋保管庫」選了之後開。要填入的來源、搜尋欄、
+     條目清單（EntryRow，不顯示複製鈕）；找不到時 EmptyState。挑了網址不符的條目先 danger 確認（AC-10-5）。
+     外框（Top app bar「選擇要填入的條目」、FLAG_SECURE）由 FeatureHostActivity 提供 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/af_pick_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/sv_space_lg"
+        android:paddingTop="@dimen/sv_space_lg"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/af_pick_search_layout"
+        style="@style/Widget.SVault.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/sv_space_lg"
+        android:layout_marginTop="@dimen/sv_space_md"
+        android:hint="@string/af_pick_search"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/sv_ic_search">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/af_pick_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/sv_space_sm"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/af_pick_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/af_pick_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
+                android:indeterminate="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_lg"
+                android:gravity="center"
+                android:text="@string/af_auth_loading"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurface" />
+        </LinearLayout>
+
+        <app.svault.android.ui.EmptyState
+            android:id="@+id/af_pick_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/sv_space_lg"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

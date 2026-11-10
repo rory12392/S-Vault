@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 條目詳細：Top app bar（名稱、返回、上鎖）、FieldRow（帳號、密碼、網址、備註）、
+     自訂欄位提示、最後修改；行動「編輯」「刪除」，回收桶裡是「還原」「永久刪除」 -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/detail_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/entries_menu" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/detail_saving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/entries_saving"
+            android:indeterminate="true"
+            android:visibility="gone" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:defaultFocusHighlightEnabled="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/sv_space_xl">
+
+            <app.svault.android.ui.Banner
+                android:id="@+id/detail_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sv_space_lg"
+                android:layout_marginVertical="@dimen/sv_space_sm"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/detail_in_bin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingVertical="@dimen/sv_space_sm"
+                android:text="@string/entries_in_bin"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:visibility="gone" />
+
+            <app.svault.android.ui.FieldRow
+                android:id="@+id/detail_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <app.svault.android.ui.FieldRow
+                android:id="@+id/detail_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <app.svault.android.ui.FieldRow
+                android:id="@+id/detail_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <app.svault.android.ui.FieldRow
+                android:id="@+id/detail_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/detail_extras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingTop="@dimen/sv_space_sm"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/detail_modified"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingTop="@dimen/sv_space_sm"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingTop="@dimen/sv_space_xl">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/detail_edit"
+                    style="@style/Widget.SVault.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/entries_edit"
+                    app:icon="@drawable/sv_ic_edit"
+                    app:iconGravity="textStart" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/detail_delete"
+                    style="@style/Widget.SVault.Button.Ghost.Danger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_sm"
+                    android:text="@string/entries_delete"
+                    app:icon="@drawable/sv_ic_delete"
+                    app:iconGravity="textStart" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/detail_restore"
+                    style="@style/Widget.SVault.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/entries_restore"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/detail_purge"
+                    style="@style/Widget.SVault.Button.Danger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sv_space_sm"
+                    android:text="@string/entries_delete_permanently"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

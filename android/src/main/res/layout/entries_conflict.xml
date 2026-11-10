@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 衝突對照（US-08）：全螢幕對話框。Top app bar（關閉＝稍後處理）、標題「解決衝突（第 n／N 筆）」
+     與條目名稱（可換行，最大字體也不截斷）、快速按鈕、說明、逐欄 DiffRow；底部固定「還有欄位沒有選擇」提示與
+     「上一筆」「下一筆／完成並儲存」 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/conflict_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/conflict_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationContentDescription="@string/conflict_later"
+        app:navigationIcon="@drawable/sv_ic_close" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/conflict_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/sv_space_lg">
+
+            <TextView
+                android:id="@+id/conflict_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityHeading="true"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/conflict_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingBottom="@dimen/sv_space_md"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/conflict_use_this"
+                style="@style/Widget.SVault.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sv_space_lg"
+                android:text="@string/conflict_use_this" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/conflict_use_other"
+                style="@style/Widget.SVault.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sv_space_lg"
+                android:text="@string/conflict_use_other" />
+
+            <TextView
+                android:id="@+id/conflict_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/sv_space_lg"
+                android:paddingTop="@dimen/sv_space_sm"
+                android:text="@string/conflict_hint"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <LinearLayout
+                android:id="@+id/conflict_rows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sv_space_sm"
+                android:contentDescription="@string/conflict_rows"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/conflict_missing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="assertive"
+        android:paddingHorizontal="@dimen/sv_space_lg"
+        android:paddingTop="@dimen/sv_space_sm"
+        android:text="@string/conflict_missing"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorError"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/sv_space_lg"
+        android:paddingVertical="@dimen/sv_space_sm">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/conflict_previous"
+            style="@style/Widget.SVault.Button.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/sv_space_sm"
+            android:layout_weight="1"
+            android:text="@string/conflict_previous" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/conflict_next"
+            style="@style/Widget.SVault.Button.Primary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/conflict_next" />
+    </LinearLayout>
+</LinearLayout>

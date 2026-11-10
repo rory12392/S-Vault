@@ -1,0 +1,4 @@
+# desktop 的功能模組（ServiceLoader；共用熱點，只在 dev 的核心任務改，T-22 建立）
+app.svault.desktop.feature.generator.GeneratorDesktopFeature
+app.svault.desktop.feature.health.HealthDesktopFeature
+app.svault.desktop.feature.importer.ImporterDesktopFeature

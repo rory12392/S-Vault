@@ -1,0 +1,20 @@
+# 本機資料與測試保管庫（不進版控）
+.localdata/
+
+# worktree 開在 repo 裡（SOP 6.2 起）
+.worktrees/
+
+# 簽章金鑰與本機設定（local.properties 由 Android Studio 產生，記 SDK 路徑）
+*.jks
+*.keystore
+local.properties
+
+# 建置產物
+build/
+.gradle/
+.kotlin/
+captures/
+
+# IDE
+.idea/
+*.iml

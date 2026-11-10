@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自動填入服務的設定（AF；T-22 建立空殼，內容屬模組分支 module/autofill）。
+     之後可加 android:settingsActivity 等屬性；manifest 的宣告是共用熱點，不在模組分支改 -->
+<autofill-service xmlns:android="http://schemas.android.com/apk/res/android" />

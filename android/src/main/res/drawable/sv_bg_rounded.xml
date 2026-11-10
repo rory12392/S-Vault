@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 圓角 8 的底色形狀；顏色由使用處的 backgroundTint 決定（Banner、強度條） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="?attr/colorSurfaceVariant" />
+    <corners android:radius="@dimen/sv_corner_small" />
+</shape>

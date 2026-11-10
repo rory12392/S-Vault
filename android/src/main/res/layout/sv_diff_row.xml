@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DiffRow：一個欄位的兩邊值，兩個 MaterialRadioButton 擇一。根元素是 ui.DiffRow（垂直） -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/sv_diff_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:accessibilityHeading="true"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sv_diff_reveal"
+            style="@style/Widget.SVault.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:icon="@drawable/sv_ic_visibility" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/sv_diff_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sv_space_xs"
+        android:orientation="vertical">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/sv_diff_this"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sv_bg_diff_option"
+            android:minHeight="@dimen/sv_touch_target"
+            android:paddingVertical="@dimen/sv_space_sm"
+            android:paddingStart="@dimen/sv_space_xs"
+            android:paddingEnd="@dimen/sv_space_md"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/sv_diff_option_text" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/sv_diff_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_sm"
+            android:background="@drawable/sv_bg_diff_option"
+            android:minHeight="@dimen/sv_touch_target"
+            android:paddingVertical="@dimen/sv_space_sm"
+            android:paddingStart="@dimen/sv_space_xs"
+            android:paddingEnd="@dimen/sv_space_md"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/sv_diff_option_text" />
+    </RadioGroup>
+</merge>

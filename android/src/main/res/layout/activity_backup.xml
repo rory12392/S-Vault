@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 備份還原：Top app bar（返回＋「備份還原」）、說明、備份時間清單（單選，新到舊）、
+     底部「還原這個版本」（danger）；沒有備份時 EmptyState（無行動）；還原中 ProgressOverlay 蓋住整個畫面 -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/backup_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/backup_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/restore_title" />
+
+        <TextView
+            android:id="@+id/backup_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/sv_space_lg"
+            android:paddingBottom="@dimen/sv_space_sm"
+            android:text="@string/restore_hint"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/backup_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/restore_list"
+                android:visibility="gone" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/backup_empty_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:visibility="gone">
+
+                <app.svault.android.ui.EmptyState
+                    android:id="@+id/backup_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/sv_space_lg" />
+            </androidx.core.widget.NestedScrollView>
+        </FrameLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backup_restore"
+            style="@style/Widget.SVault.Button.Danger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/sv_space_lg"
+            android:enabled="false"
+            android:text="@string/restore_submit"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <app.svault.android.ui.ProgressOverlay
+        android:id="@+id/backup_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- bcpkix 內含空的 X509TrustManager（Bouncy Castle 自己的 TLS 工具類別）；S-Vault 不用 bcpkix 連網，
+         只對這個 jar 忽略，App 自己的程式仍會被檢查 -->
+    <issue id="TrustAllX509TrustManager">
+        <ignore path="**/bcpkix-jdk18on-*.jar" />
+    </issue>
+</lint>

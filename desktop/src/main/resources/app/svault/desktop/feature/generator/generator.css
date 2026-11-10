@@ -1,0 +1,47 @@
+/* 密碼產生器（GEN）的版面（T-41）。只用 -sv-* token 與尺寸刻度 */
+.sv-gen-panel {
+    -fx-spacing: 16px;
+}
+.sv-gen-section,
+.sv-gen-options {
+    -fx-spacing: 8px;
+}
+.sv-gen-result {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+    -fx-padding: 8px 4px 8px 12px;
+    -fx-background-color: -sv-border, -sv-surface-alt;
+    -fx-background-insets: 0px, 1px;
+    -fx-background-radius: 8px;
+    -fx-min-height: 48px;
+}
+.sv-gen-result-text {
+    -fx-font-size: 16px;
+}
+.sv-gen-row {
+    -fx-spacing: 12px;
+    -fx-alignment: center-left;
+}
+.sv-gen-row-label {
+    -fx-min-width: 48px;
+}
+.sv-gen-slider {
+    -fx-pref-width: 220px;
+}
+.sv-gen-classes {
+    -fx-hgap: 16px;
+    -fx-vgap: 8px;
+}
+/* 編輯畫面的彈出面板 */
+.sv-gen-dialog .sv-gen-panel {
+    -fx-pref-width: 360px;
+}
+/* 選單的獨立頁 */
+.sv-gen-page {
+    -fx-spacing: 16px;
+    -fx-padding: 0px 4px 24px 0px;
+}
+.sv-gen-copied {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sv-fg-muted;
+}

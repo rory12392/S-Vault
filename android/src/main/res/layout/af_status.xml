@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自動填入的目前狀態（AF，T-82；設定段落與引導頁共用，以 include 放進去）：圖示＋狀態＋說明，合成一個可聚焦的區塊，
+     TalkBack 一次讀完；狀態改變時由 live region 讀出。文字、圖示與顏色在 AfStatusView 設定（已啟用＝success 色＋勾，
+     不只靠顏色），最大字體時換行 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/af_status"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:accessibilityLiveRegion="polite"
+    android:focusable="true"
+    android:minHeight="@dimen/sv_row_min_height"
+    android:orientation="horizontal"
+    android:screenReaderFocusable="true">
+
+    <ImageView
+        android:id="@+id/af_status_icon"
+        android:layout_width="@dimen/sv_icon"
+        android:layout_height="@dimen/sv_icon"
+        android:layout_marginEnd="@dimen/sv_space_md"
+        android:importantForAccessibility="no" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/af_status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+        <TextView
+            android:id="@+id/af_status_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sv_space_xs"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+    </LinearLayout>
+</LinearLayout>
