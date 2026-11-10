@@ -24,4 +24,7 @@
     <color name="sv_on_warning_container">#FBE6BD</color>
     <!-- DESIGN 的 #00000066（RRGGBBAA）＝ Android 的 #66000000 -->
     <color name="sv_shadow">#66000000</color>
+    <!-- App 圖示不隨深色模式變色（和 Windows 的 .ico 一致） -->
+    <color name="sv_launcher_background">#FFFFFF</color>
+    <color name="sv_launcher_foreground">#000000</color>
 </resources>

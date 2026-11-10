@@ -2,7 +2,7 @@
 
 S-Vault 以相依套件的形式使用下列開源程式碼，**沒有修改任何原始碼**。「關於／開源授權」頁（T-23、T-24）列出同樣的內容。
 
-> 最後更新：2026-11-11（T-131：補 jackson-core、Woodstox 內含的元件，Apache 套件的 NOTICE 原文，GPL 元件的原始碼位置，Android 漏列的相依）；2026-11-10（T-103：加入 Public Suffix List）；2026-10-31（M-03 整合：加入 T-40 的 EFF 字表）；2026-10-21（T-18 加入 JNA；T-09 加入 zxcvbn4j；T-01 起依 `.\gradlew :core:dependencies`、`:android:dependencies` 的執行期相依整理）。新增或升級相依時更新本檔，並同時複製到 `core/src/main/resources/app/svault/core/shell/NOTICES.md`（「關於」頁讀的複本，`NoticesTest` 比對兩份）。
+> 最後更新：2026-11-11（T-133：App 圖示改用自製的幾何 S，不再用 Material Symbols 的 `lock`）；2026-11-11（T-131：補 jackson-core、Woodstox 內含的元件，Apache 套件的 NOTICE 原文，GPL 元件的原始碼位置，Android 漏列的相依）；2026-11-10（T-103：加入 Public Suffix List）；2026-10-31（M-03 整合：加入 T-40 的 EFF 字表）；2026-10-21（T-18 加入 JNA；T-09 加入 zxcvbn4j；T-01 起依 `.\gradlew :core:dependencies`、`:android:dependencies` 的執行期相依整理）。新增或升級相依時更新本檔，並同時複製到 `core/src/main/resources/app/svault/core/shell/NOTICES.md`（「關於」頁讀的複本，`NoticesTest` 比對兩份）。
 
 ## 兩平台共用（core）
 
@@ -59,7 +59,6 @@ Bouncy Castle 等套件 jar 內的 `META-INF/LICENSE*`、`NOTICE*` 在 APK 打�
 
 | 素材 | 授權 | 用途 |
 |---|---|---|
-| Material Symbols（Outlined）：`lock` | Apache License 2.0 | 暫用的 App 圖示（Android 啟動圖示） |
 | Material Symbols（Outlined，24px）：`add`、`check_circle`、`chevron_left`、`chevron_right`、`close`、`content_copy`、`dark_mode`、`delete`、`edit`、`error`、`folder`、`info`、`key`、`light_mode`、`lock`、`lock_open`、`menu`、`more_vert`、`open_in_new`、`search`、`settings`、`sync`、`visibility`、`visibility_off`、`warning` | Apache License 2.0 | desktop 介面圖示（`icons.css` 的 `-fx-shape`，只取 SVG 路徑字串，來源 `google/material-design-icons` 的 `symbols/web/`，2026-10-17 取得；路徑前加了讓縮放等比例的零長度線段，圖形本身未修改） |
 | Material Symbols（Outlined，24px）：上一列的 25 個，加 `language`、`arrow_back` | Apache License 2.0 | android 介面圖示（`res/drawable/sv_ic_*.xml` 的 vector drawable，路徑與 desktop 相同，`language`、`arrow_back` 於 2026-10-17 從同一來源取得；只改成 vector 格式與主題色，圖形本身未修改） |
 

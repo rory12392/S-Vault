@@ -40,6 +40,7 @@ import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -92,6 +93,7 @@ public final class SvaultApp extends Application {
                 : ThemeMode.fromSetting(now.theme())));
 
         AppShell shell = new AppShell();
+        stage.getIcons().add(new Image("/app/svault/desktop/shell/app-icon.png"));
         Scene scene = dev.fixedSize() ? new Scene(shell, dev.width(), dev.height()) : new Scene(shell);
         // 一定要在 show() 之前套用，否則會先閃一下淺色
         theme.track(scene);

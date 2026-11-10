@@ -60,9 +60,10 @@ tasks.test {
 // ---- 打包（STACK §9）：直接呼叫工具鏈 JDK 的 jpackage，不用第三方打包外掛 ----
 
 val appName = "S-Vault"
-val appVersion = "1.1.0"
+val appVersion = "1.1.1"
 val jpackageInput = layout.buildDirectory.dir("jpackage-input")
 val jpackageOutput = layout.buildDirectory.dir("jpackage")
+val windowsAppIcon = layout.projectDirectory.file("src/main/packaging/app-icon.ico")
 val launcher = javaToolchains.launcherFor(java.toolchain)
 
 val prepareJpackageInput = tasks.register<Sync>("prepareJpackageInput") {
@@ -94,13 +95,20 @@ fun jpackageArgs(type: String): List<String> = listOf(
     "--add-modules", "java.base,java.desktop,java.logging,java.naming,java.sql,jdk.jfr,jdk.unsupported," +
         "jdk.localedata,jdk.crypto.ec",
     "--jlink-options", "--strip-debug --no-header-files --no-man-pages --strip-native-commands",
-)
+) + if (OperatingSystem.current().isWindows) {
+    listOf("--icon", windowsAppIcon.asFile.absolutePath)
+} else {
+    emptyList()
+}
 
 tasks.register<Exec>("jpackageImage") {
     group = "distribution"
     description = "產生免安裝資料夾 build/jpackage/S-Vault/（自我檢查用）"
     dependsOn(prepareJpackageInput)
     inputs.dir(jpackageInput)
+    if (OperatingSystem.current().isWindows) {
+        inputs.file(windowsAppIcon)
+    }
     outputs.dir(jpackageOutput.map { it.dir(appName) })
     doFirst {
         // jpackage 拒絕覆寫已存在的輸出資料夾
@@ -116,6 +124,8 @@ tasks.register<Exec>("jpackageExe") {
     dependsOn(prepareJpackageInput)
     doFirst {
         executable = jpackageExecutable()
-        args = jpackageArgs("exe") + listOf("--win-menu", "--win-shortcut", "--win-dir-chooser", "--win-per-user-install")
+        // 沒指定 --win-menu-group 時，開始功能表的資料夾會叫「Unknown」（v1.1.0 實裝發現）
+        args = jpackageArgs("exe") + listOf("--win-menu", "--win-menu-group", appName, "--win-shortcut",
+            "--win-dir-chooser", "--win-per-user-install")
     }
 }

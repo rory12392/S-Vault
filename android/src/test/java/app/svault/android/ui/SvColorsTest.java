@@ -42,13 +42,13 @@ public class SvColorsTest {
     public void colorsMatchDesktopTheme() throws IOException {
         Map<String, String> light = cssColors("theme-light.css");
         Map<String, String> dark = cssColors("theme-dark.css");
-        Map<String, String> androidLight = colors("values");
+        Map<String, String> androidLight = withoutLauncher(colors("values"));
         assertEquals(22, androidLight.size());
         light.keySet().retainAll(androidLight.keySet());
         dark.keySet().retainAll(androidLight.keySet());
         assertEquals("desktop 主題要有 android 的每一個顏色", androidLight.keySet(), light.keySet());
         assertEquals(light, androidLight);
-        assertEquals(dark, colors("values-night"));
+        assertEquals(dark, withoutLauncher(colors("values-night")));
     }
 
     @Test
@@ -77,6 +77,12 @@ public class SvColorsTest {
             out.put("sv_" + m.group(1).replace('-', '_'), hex.length() == 9 ? cssToAndroid(hex) : hex);
         }
         return out;
+    }
+
+    /** App 圖示的顏色（{@code sv_launcher_*}，T-133）不是介面 token，desktop 主題沒有對應值。 */
+    private static Map<String, String> withoutLauncher(Map<String, String> colors) {
+        colors.keySet().removeIf(name -> name.startsWith("sv_launcher_"));
+        return colors;
     }
 
     private static String cssToAndroid(String rrggbbaa) {

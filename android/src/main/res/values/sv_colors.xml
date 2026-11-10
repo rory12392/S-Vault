@@ -26,4 +26,7 @@
     <!-- 陰影與遮罩（ProgressOverlay 的底）；Android 的元件陰影用 M3 預設 elevation。
          Android 色碼是 #AARRGGBB：DESIGN 的 #1A223029（CSS 的 RRGGBBAA）寫成 #291A2230 -->
     <color name="sv_shadow">#291A2230</color>
+    <!-- App 圖示（黑白幾何 S），淺色與深色相同 -->
+    <color name="sv_launcher_background">#FFFFFF</color>
+    <color name="sv_launcher_foreground">#000000</color>
 </resources>

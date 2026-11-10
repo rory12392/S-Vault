@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Material Symbols Outlined「lock」（Apache 2.0，見 NOTICES.md），縮放到 adaptive icon 的安全區內 -->
+<!-- App 圖示：幾何 S（S-Vault 自製）。座標全在 adaptive icon 的安全區（中心 54、半徑 33）內，
+     任何遮罩形狀都不會裁到；也當 monochrome 圖層用 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="1920"
-    android:viewportHeight="1920">
-    <group
-        android:translateX="480"
-        android:translateY="1440">
-        <path
-            android:fillColor="@color/sv_on_primary"
-            android:pathData="M240,-80q-33,0 -56.5,-23.5T160,-160v-400q0,-33 23.5,-56.5T240,-640h40v-80q0,-83 58.5,-141.5T480,-920q83,0 141.5,58.5T680,-720v80h40q33,0 56.5,23.5T800,-560v400q0,33 -23.5,56.5T720,-80L240,-80ZM240,-160h480v-400L240,-560v400ZM480,-280q33,0 56.5,-23.5T560,-360q0,-33 -23.5,-56.5T480,-440q-33,0 -56.5,23.5T400,-360q0,33 23.5,56.5T480,-280ZM360,-640h240v-80q0,-50 -35,-85t-85,-35q-50,0 -85,35t-35,85v80Z" />
-    </group>
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="@color/sv_launcher_foreground"
+        android:pathData="M27,64 L27,42 L42,28 L66,28 L76,38 L48,38 L40,46 L40,51 L61,60 L57,64 Z M81,44 L81,66 L66,80 L42,80 L32,70 L60,70 L68,62 L68,57 L47,48 L51,44 Z" />
 </vector>
